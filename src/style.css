@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+
+#root{
+    height: 100vh;
+    width: 100vw;
+}
+
+img {
+    height: 300px;
+    margin: auto;   
+    display: flex;
+    padding: 17vh 0 0 0;
+}
+
+Button {
+    display: flex;
+    width: 160px;
+    font-size: 3em;
+    
+}
+
+.button-container {
+    height: 25vh;
+    margin: 10vh;
+}
+
+.background-container{
+  margin: auto;
+  padding: 0;
+}

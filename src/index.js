@@ -3,12 +3,29 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import App from './App';
 import store from './redux-toolkit/store';
+import { ThemeProvider, createTheme } from '@mui/material';
 
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
+const theme = createTheme({
+	palette: {
+		primary:{
+			light: "#665A9F",
+			main: "#8D5FB3"
+		},
+		secondary:{
+			main: "#CCC",
+			
+		}
+	}
+})
+
+
 root.render(
-	<Provider store={store}>
-		<App />
-	</Provider>	
+	<ThemeProvider theme={theme}>
+		<Provider store={store}>
+			<App />
+		</Provider>	
+	</ThemeProvider>
 );
