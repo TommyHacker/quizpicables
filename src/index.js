@@ -6,7 +6,7 @@ import store from './redux-toolkit/store';
 import { ThemeProvider, createTheme } from '@mui/material';
 import './style.css';
 
-const container = document.getElementById('root');
+const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 
 const theme = createTheme({

@@ -1,1 +1,1 @@
-export { default as exampleComponent } from './examplecomponent';
+export { default as Nav } from "./Nav";
