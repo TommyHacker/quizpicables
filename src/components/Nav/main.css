@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+nav{
+    width: 100vw;
+    border: solid black 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 2rem;
+}
+
+a{
+    text-decoration: none;
+    text-transform: capitalize;
+    border: solid black 1px;
+    padding: 0 10px;
+}
