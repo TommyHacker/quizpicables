@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+
 *{
     margin: 0;
     padding: 0;
@@ -24,8 +26,8 @@ img {
 Button {
     display: flex;
     width: 160px;
-    font-size: 3em;
-    
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 1.8px;
 }
 
 .button-container {
