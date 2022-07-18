@@ -16,11 +16,11 @@ export const counterSlice = createSlice({
     },
     incrementByAmount: (state, action) => {
       state.score += action.payload
-    },
+    },   //POTENTIAL ALTERNATE SCORE FUNCTION - DEFAULT CORRECT 1000POINTS (MINUS TIME TO ANSWER 0-1000) 
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = counterSlice.actions
+export const { increment, noChange, incrementByAmount } = counterSlice.actions
 
 export default counterSlice.reducer
