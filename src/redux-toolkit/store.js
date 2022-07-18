@@ -1,5 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit';
+import scoreReducer from './counter';
 
-export const store = configureStore({
-  reducer: {},
+export default configureStore({
+  reducer: {
+    scoreCounter: scoreReducer,
+  },
 })
