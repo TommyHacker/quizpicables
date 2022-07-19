@@ -79,10 +79,7 @@ const SettingsModal = () => {
                             </select> */}
                              <select onChange={handleCategory}>
                             {categories.map((category) => {
-                            return (
-                                <option key={category.id}>
-                                    {category.name}
-                                </option>
+                            return (<option key={category.id}>{category.name}</option>
                             );
                             })}
                         </select>
