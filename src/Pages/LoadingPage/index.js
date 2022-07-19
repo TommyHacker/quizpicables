@@ -22,13 +22,12 @@ const loadingPage = () => {
 
     return (
         <>
-        
             <div className="background-container" style={{ backgroundImage: `url(${background})`, backgroundRepeat:"no-repeat",backgroundSize:"cover", height:'100vh',width:'100vw'  }}>
 
            
             
-            <Grid className="button-container" style={{ display:'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center', margin:'auto', height: '85vh' }}>
-                 <Typography style={{fontSize: '7em', fontWeight: 'bold', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 10px #665A9F,0px 0px 10px #665A9F,0px 0px 10px #665A9F,0px 0px 10px #553300,0px 0px 10px #665A9F'}}>- Loading Session -</Typography>
+            <Grid className="button-container" style={{ display:'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center', margin:'auto', height: '90vh' }}>
+                 <Typography style={{fontSize: '6em', fontWeight: 'bold', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 8px #665A9F,0px 0px 18px #665A9F,0px 0px 8px #665A9F,0px 0px 10px #665A9F,0px 0px 10px #665A9F'}}>- Loading Session -</Typography>
 
                 <div style={{height: '450px'}} className='container' ref={container}>
                 </div>
