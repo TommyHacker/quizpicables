@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Routes, Route } from "react-router-dom";
 import * as Pages from "./Pages";
 import assets from "./assets";
@@ -7,6 +7,9 @@ import "./style.css";
 import Layout from "./Layout";
 
 const App = () => {
+  // reusable to avoid a bug where the user disconnected and re-joined which kept two ansers chosen
+  const resetAnswers = { a: false, b: false, c: false, d: false };
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
