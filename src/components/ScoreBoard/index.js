@@ -24,23 +24,30 @@ function ScoreBoard() {
 
       <div>
         <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+          <Table sx={{ minWidth: 500 }} aria-label="a dense table">
+            {/* Table head */}
+
             <TableHead>
-              <TableRow>
-                <TableCell>Users</TableCell>
-                <TableCell align="right">Scores</TableCell>
+              <TableRow
+                sx={{ "&:first-child td, &:first-child th": { border: 5 } }}
+              >
+                <TableCell align="center">Users</TableCell>
+                <TableCell align="center">Scores</TableCell>
               </TableRow>
             </TableHead>
+
+            {/* Table Body */}
+
             <TableBody>
               {rows.map((row) => (
                 <TableRow
                   key={row.user}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell component="th" scope="row">
+                  <TableCell align="center" component="th" scope="row">
                     {row.user}
                   </TableCell>
-                  <TableCell align="right">{row.score}</TableCell>
+                  <TableCell align="center">{row.score}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
