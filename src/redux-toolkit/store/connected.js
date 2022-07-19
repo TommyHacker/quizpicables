@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// If server emits "announcement" to socket, update systemMessages array.
 export const connectedSlice = createSlice({
   name: "connected",
   initialState: {
@@ -9,6 +8,8 @@ export const connectedSlice = createSlice({
   reducers: {
     setConnected: (state) => {
       //   switches the socket connection on or off
+      // when changed to true, the socket component will fire a connection request to the server socket.io setup
+      console.log("connection", state.connected.toString());
       state.connected = !state.connected;
     },
   },

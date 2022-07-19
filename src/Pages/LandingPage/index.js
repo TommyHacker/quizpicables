@@ -4,7 +4,6 @@ import { JoinModal, SettingsModal } from '../../components';
 import { joinModalActions, settingsModalActions } from '../../redux-toolkit/store/modal-slice';
 
 
-
 const LandingPage = () => {
     const dispatch = useDispatch();
     const closeJoinModal = useSelector(state => !state.joinModal.modalIsVisible);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSystemMessage } from "../../redux-toolkit/quizMessage";
+import { setSystemMessage } from "../../redux-toolkit/store/quizMessage";
 import Socket from "../../helpers/socket-io";
 
 export default function SystemMessageComponent() {

@@ -1,7 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import scoreReducer from "./counter";
 import { joinModalSlice, settingsModalSlice } from "./modal-slice";
-import userReducer from "./user";
+import {
+  usernameSlice,
+  isHostSlice,
+  roomNumberSlice,
+  scoreSlice,
+} from "./user";
 import systemMessageReducer from "./quizMessage";
 import connectedReducer from "./connected";
 
@@ -10,7 +15,10 @@ const store = configureStore({
     scoreCounter: scoreReducer,
     joinModal: joinModalSlice.reducer,
     settingsModal: settingsModalSlice.reducer,
-    username: userReducer,
+    username: usernameSlice.reducer,
+    isHost: isHostSlice.reducer,
+    roomNumber: roomNumberSlice.reducer,
+    score: scoreSlice.reducer,
     systemMessage: systemMessageReducer,
     connected: connectedReducer,
   },
