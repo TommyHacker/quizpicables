@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+html {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+}
+
+#root{
+    height: 100vh;
+    width: 100vw;
+}
+
+.main-logo {
+    height: 500px;
+    margin: auto;   
+    display: flex;
+    padding: 17vh 0 0 0;
+}
+
+Button {
+    display: flex;
+    width: 160px;
+    font-family: 'Dosis', sans-serif;
+    letter-spacing: 1.8px;
+}
+
+.button-container {
+    height: 25vh;
+    margin: 10vh;
+}
+
+.background-container{
+  margin: auto;
+  padding: 0;
+}

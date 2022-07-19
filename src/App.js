@@ -1,14 +1,10 @@
 import React from 'react';
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
 import Layout from './Layout';
 
 import { Routes, Route } from 'react-router-dom';
 import * as Pages from "./Pages";
 import * as components from './components';
 
-import logo from './assets/images/logo_large.png';
-import background from './assets/images/background8.jpg';
 import './style.css';
 
 const App = () => {
