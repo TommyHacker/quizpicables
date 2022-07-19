@@ -1,4 +1,5 @@
 .modal {
+    font-family: 'Dosis';
     position: fixed; 
     left: 0;
     right: 0; 
@@ -17,6 +18,10 @@
 
 .modal-item {
     padding: 10px;
+}
+
+input{
+   min-width: 300px;
 }
 
 label {
