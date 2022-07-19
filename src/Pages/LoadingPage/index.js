@@ -28,7 +28,7 @@ const loadingPage = () => {
            
             
             <Grid className="button-container" style={{ display:'flex', flexDirection: 'column', alignItems:'center', justifyContent:'center', margin:'auto', height: '100vh' }}>
-                 <Typography style={{fontSize: '4.8rem', fontWeight: 'bold', letterSpacing: '3px', color: 'white'}}>Loading Session</Typography>
+                 <Typography style={{fontSize: '7em', fontWeight: 'bold', letterSpacing: '3px', color: '#665A9F', textShadow: '0px 0px 10px white,0px 0px 10px white,0px 0px 10px white,0px 0px 10px #553300,0px 0px 10px white'}}>Loading Session</Typography>
 
                 <div style={{height: '450px'}} className='container' ref={container}>
                 </div>
