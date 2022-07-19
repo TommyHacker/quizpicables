@@ -33,7 +33,7 @@ const LandingPage = () => {
         <>
         <div className="background-container" style={{ backgroundImage: `url(${background})`, backgroundRepeat:"no-repeat",backgroundSize:"cover", height:'100vh',width:'100vw'  }} >
             <img className='main-logo' src={ logo } alt="main logo"/>
-            <Grid className="button-container" style={{ display:'flex', alignItems:'center', justifyContent:'center', margin:'auto' }}>
+            <Grid className="button-container" style={{ display:'flex', alignItems:'center', justifyContent:'center', margin:'auto', height: '120px' }}>
                 <Button onClick={toggleSettingsModal} variant="contained" style={{fontWeight:'bold'}} sx={{ p: 3, m: 2.6 }}>Create Room</Button>
                 <Button onClick={toggleJoinModal} variant="contained" style={{fontWeight:'bold'}} sx={{ p: 3, m: 2.6 }}>Join Room</Button>
             </Grid>	

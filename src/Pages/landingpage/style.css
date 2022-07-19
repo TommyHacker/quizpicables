@@ -28,13 +28,10 @@ Button {
     display: flex;
     width: 160px;
     font-family: 'Dosis', sans-serif;
+    font-size: 1.4em;
     letter-spacing: 1.8px;
 }
 
-.button-container {
-    height: 25vh;
-    margin: 10vh;
-}
 
 .background-container{
   margin: auto;
