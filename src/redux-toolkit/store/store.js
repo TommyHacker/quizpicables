@@ -7,6 +7,7 @@ import {
   roomNumberSlice,
   scoreSlice,
 } from "./user";
+import { usersSlice } from "./users";
 import systemMessageReducer from "./quizMessage";
 import connectedReducer from "./connected";
 
@@ -15,6 +16,7 @@ const store = configureStore({
     scoreCounter: scoreReducer,
     joinModal: joinModalSlice.reducer,
     settingsModal: settingsModalSlice.reducer,
+    users: usersSlice.reducer,
     username: usernameSlice.reducer,
     isHost: isHostSlice.reducer,
     roomNumber: roomNumberSlice.reducer,

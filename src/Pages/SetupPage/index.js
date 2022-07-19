@@ -5,7 +5,12 @@ let socket;
 
 
 const SetupPage = () => {
-  return <h1>Setup page!</h1>;
+  return (
+  <>
+  <h1>Setup page!</h1>
+
+  </>
+  );
 };
 
 export default SetupPage;
