@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const connectedSlice = createSlice({
   name: "connected",
   initialState: {
-    connected: false,
+    connected: true,
   },
   reducers: {
     setConnected: (state) => {

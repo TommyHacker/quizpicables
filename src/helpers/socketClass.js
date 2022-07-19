@@ -1,21 +1,18 @@
 const { io } = require("socket.io-client");
 
-
-
 const randomRoomId = () => {
   return Math.floor(Math.random() * 399);
 };
 
 let socket;
 class SocketControl {
-  constructor(username, isHost) {
+  constructor(username = "anonymous", isHost = false) {
     this.url = "http://localhost:4041";
     this.username = username;
     this.roomNumber = 0;
     this.isHost = isHost;
     socket = io.connect(this.url);
-      socket.on("message", ({ data }) => console.log(data));
-      
+    socket.on("message", ({ data }) => console.log(data));
   }
   connect() {
     console.log("connecting to socket");
@@ -53,23 +50,4 @@ class SocketControl {
   }
 }
 
-// const newSocket = new SocketControl("tommyHacker", 999, false);
-
-// setTimeout(() => {
-//   newSocket.connect();
-// }, 1000);
-
-// setTimeout(() => {
-//   newSocket.setRoomNumber(999);
-//   newSocket.join();
-// }, 2000);
-
-// setTimeout(() => {
-//   newSocket.giveAnswer("A", "B");
-// }, 3000);
-
-// setTimeout(() => {
-//   newSocket.sendMessage("fuck the lot of you");
-// }, 4000);
-
-export default SocketControl;
+export const socketController = new SocketControl("anonymous", false);
