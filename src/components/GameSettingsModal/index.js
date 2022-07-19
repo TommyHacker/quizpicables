@@ -5,6 +5,9 @@ import { settingsModalActions } from "../../redux-toolkit/store/modal-slice";
 //import useAxios from "../../hooks/useAxios";
 import { getCategories } from "../../hooks/useAxios";
 
+//MATERIAL UI
+import Button from '@mui/material/Button';
+import Grid from '@mui/material/Grid';
 
 const SettingsModal = () => {
 
@@ -63,6 +66,7 @@ const SettingsModal = () => {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h4 className="modal-title">Game Settings</h4>
+                        <Button className='closeButton' onClick={toggleModal} variant="contained" style={{fontWeight:'bold', height: '25px', width: '25px', minWidth: '25px'}} >X</Button>
                     </div>
                     <div className="modal-body">
                         <form onSubmit={handleSubmit}>
@@ -91,8 +95,9 @@ const SettingsModal = () => {
                             <input onChange={handleNumber} type='number' id="number" name='number'></input>
                             </div>
                             <div>
-                            <button onClick={toggleModal}>Close</button>
-                            <button>Get Started</button>
+                            <Grid className="button-container" style={{ display:'flex', alignItems:'center', justifyContent:'center', margin:'auto', height:'100px' }}>
+                                <Button variant="contained" style={{fontWeight:'bold', height: '50px'}} sx={{ p: 3, m: 2.6 }} >Get Started!</Button>
+                            </Grid>    
                             </div>
                         </form>
                     </div>

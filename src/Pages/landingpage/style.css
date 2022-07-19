@@ -3,6 +3,7 @@
 *{
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 
 html {
@@ -16,8 +17,8 @@ html {
     width: 100vw;
 }
 
-img {
-    height: 300px;
+.main-logo {
+    height: 500px;
     margin: auto;   
     display: flex;
     padding: 17vh 0 0 0;
@@ -27,13 +28,10 @@ Button {
     display: flex;
     width: 160px;
     font-family: 'Dosis', sans-serif;
+    font-size: 1.4em;
     letter-spacing: 1.8px;
 }
 
-.button-container {
-    height: 25vh;
-    margin: 10vh;
-}
 
 .background-container{
   margin: auto;

@@ -1,4 +1,6 @@
 .modal {
+    font-family: 'Dosis';
+    font-size: 1.3em;
     position: fixed; 
     left: 0;
     right: 0; 
@@ -11,6 +13,7 @@
 }
 
 .modal-content {
+    border-radius: 10px;
     width: 500px; 
     background-color: #fff; 
 }
@@ -18,12 +21,28 @@
 .modal-item {
     padding: 10px;
 }
+ .modal-item label{
+    padding-right:10px;
+    
+ }
+ .modal-item input{
+    width: 60px;
+    height: 30px;
+    padding: 8px;
+ }
+ .modal-item select{
+    width: 60px;
+    height: 30px;
+ }
+
 
 input {
     margin-left: 5px;
 }
 
 .modal-header, .modal-footer {
+    display: flex;
+    justify-content: space-between;
     padding: 10px; 
     text-align: center;
 }
@@ -41,4 +60,11 @@ input {
 button {
     margin: 10px;
     padding: 10px;
+}
+
+.close-button{
+    min-width: 25px;
+    text-align: center;
+    align-items: right;
+    justify-content: right;
 }
