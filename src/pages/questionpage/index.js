@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { increment, noChange } from "../../redux-toolkit/counter"
+import { increment, noChange } from "../../redux-toolkit/store/counter"
 
 const questionPage = () => {
 

@@ -1,5 +1,5 @@
-//Loading/Landing Page
-export { default as loadingPage } from './loadingpage';
+//Landing Page
+export { default as LandingPage } from './landingpage';
 
 // Host quiz setup
 export { default as setup } from './setup';
