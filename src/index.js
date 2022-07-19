@@ -34,7 +34,9 @@ const theme = createTheme({
 root.render(
 	<ThemeProvider theme={theme}>
 		<Provider store={store}>
-			<App />
+			<Router>
+				<App />
+			</Router>
 		</Provider>	
 	</ThemeProvider>
 );
