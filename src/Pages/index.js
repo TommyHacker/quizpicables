@@ -12,6 +12,3 @@ export { default as QuestionPage } from "./QuestionPage";
 
 //Final Results Page
 export { default as FinalResultPage } from "./FinalResultPage";
-
-//Landing pahe
-export {default as LandingPage} from './LandingPage'
