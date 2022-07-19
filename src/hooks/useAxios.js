@@ -44,3 +44,9 @@ export const getCategories = () => {
     return data;
   });
 };
+
+export const getQuestions = () => {
+  return openDb.get("/api.php?amount=10").then(({ data }) => {
+    return data;
+  });
+};

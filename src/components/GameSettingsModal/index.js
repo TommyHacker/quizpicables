@@ -4,6 +4,8 @@ import { useDispatch } from "react-redux";
 import { settingsModalActions } from "../../redux-toolkit/store/modal-slice";
 //import useAxios from "../../hooks/useAxios";
 import { getCategories } from "../../hooks/useAxios";
+import { changeAmount, changeCategory, changeDifficulty } from "../../redux-toolkit/store/questions-slice";
+import  { useNavigate }  from "react-router-dom";
 
 //MATERIAL UI
 import Button from '@mui/material/Button';
@@ -15,6 +17,8 @@ const SettingsModal = () => {
    const [number, setNumber] = useState(0);
    const [difficulty, setDifficulty] = useState('');
    const [category, setCategory] = useState('');
+
+   const navigate = useNavigate();
 
    const [categories, setCategories] = useState([]);
 
@@ -37,25 +41,28 @@ const SettingsModal = () => {
     const toggleModal = (e) => {
         e.preventDefault();
         dispatch(settingsModalActions.toggleSettingsModal());
-        console.log(response.trivia_categories);
-        console.log(response.trivia_categories.map((category => category.name )));
     }
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        navigate("/question");
+
     }
 
     const handleNumber = (e) => {
         setNumber(e.target.value);
+        dispatch(changeAmount(e.target.value));
     }
 
     const handleDifficulty = (e) => {
         setDifficulty(e.target.value);
+        dispatch(changeCategory(e.target.value));
     }
 
     const handleCategory = (e) => {
         setCategory(e.target.value);
+        dispatch(changeDifficulty(e.target.value));
     }
 
 
@@ -69,14 +76,9 @@ const SettingsModal = () => {
                         <Button className='closeButton' onClick={toggleModal} variant="contained" style={{fontWeight:'bold', height: '25px', width: '25px', minWidth: '25px'}} >X</Button>
                     </div>
                     <div className="modal-body">
-                        <form onSubmit={handleSubmit}>
+                        <form>
                             <div className='modal-item'>
                             <label htmlFor='category'>Choose a category</label>
-                            {/* <select name='category' id='category' onChange={handleCategory}>
-                            {response.trivia_categories.map(({id, name}) => <option key={id} value={id}>{name}</option> )}
-                            {/* <option>Option 1</option> 
-                            <option></option>
-                            </select> */}
                              <select onChange={handleCategory}>
                             {categories.map((category) => {
                             return (<option key={category.id}>{category.name}</option>
@@ -96,7 +98,7 @@ const SettingsModal = () => {
                             </div>
                             <div>
                             <Grid className="button-container" style={{ display:'flex', alignItems:'center', justifyContent:'center', margin:'auto', height:'100px' }}>
-                                <Button variant="contained" style={{fontWeight:'bold', height: '50px'}} sx={{ p: 3, m: 2.6 }} >Get Started!</Button>
+                                <Button onClick={handleSubmit}variant="contained" style={{fontWeight:'bold', height: '50px'}} sx={{ p: 3, m: 2.6 }} >Get Started!</Button>
                             </Grid>    
                             </div>
                         </form>
