@@ -24,6 +24,8 @@ input {
 }
 
 .modal-header, .modal-footer {
+    display: flex;
+    justify-content: space-between;
     padding: 10px; 
     text-align: center;
 }
@@ -41,4 +43,11 @@ input {
 button {
     margin: 10px;
     padding: 10px;
+}
+
+.close-button{
+    min-width: 25px;
+    text-align: center;
+    align-items: right;
+    justify-content: right;
 }
