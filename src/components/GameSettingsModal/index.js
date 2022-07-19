@@ -2,40 +2,26 @@ import React, {useState, useEffect} from "react";
 import './GameSettings.css';
 import { useDispatch } from "react-redux";
 import { settingsModalActions } from "../../redux-toolkit/store/modal-slice";
-import useAxios from "../../hooks/useAxios";
-import axios from "axios";
+//import useAxios from "../../hooks/useAxios";
+import { getCategories } from "../../hooks/useAxios";
 
 
 const SettingsModal = () => {
 
-    const {response, error, loading } = useAxios({url: "/api_category.php"});
-   
-     console.log(response);
-    // // console.log(response.trivia_categories.map((category) => category.name));
-    // console.log(response.trivia_categories[0]);
+   //const {response, error, loading } = useAxios({url: "/api_category.php"});
+   const [number, setNumber] = useState(0);
+   const [difficulty, setDifficulty] = useState('');
+   const [category, setCategory] = useState('');
+
+   const [categories, setCategories] = useState([]);
+
+   useEffect(() => {
+    getCategories().then((categoriesFromApi) => {
+      setCategories(categoriesFromApi.trivia_categories);
+    });
+  }, []);
 
 
-    //axios.defaults.baseURL = 'https://opentdb.com';
-     //const {response, error, loading } = useAxios({url: "/api_category.php"});
-
-    // const [response, setResponse] = useState();
-    // const [error, setError] = useState("");
-    // const [loading, setLoading] = useState(true);
-
-    // useEffect(() => {
-
-    //     const fetchData = async (url) => {
-    //       return await axios
-    //             .get(url)
-    //                 .then(res => res.data)
-    //                 .catch(err => setError(err))
-    //                 .finally(() => setLoading(false))
-
-    //     }
-    //     fetchData("/api_category.php").then(data => setResponse(data));
-    // }, [response]);
-    
-    //console.log(response.trivia_categories);
 
     const difficultyOptions = [
         {id: "easy", name:"Easy"},
@@ -48,15 +34,25 @@ const SettingsModal = () => {
     const toggleModal = (e) => {
         e.preventDefault();
         dispatch(settingsModalActions.toggleSettingsModal());
+        console.log(response.trivia_categories);
+        console.log(response.trivia_categories.map((category => category.name )));
     }
 
 
-    const handleSubmit =   (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
     }
 
-    const handleChnage = (e) => {
+    const handleNumber = (e) => {
+        setNumber(e.target.value);
+    }
 
+    const handleDifficulty = (e) => {
+        setDifficulty(e.target.value);
+    }
+
+    const handleCategory = (e) => {
+        setCategory(e.target.value);
     }
 
 
@@ -71,25 +67,31 @@ const SettingsModal = () => {
                     <div className="modal-body">
                         <form onSubmit={handleSubmit}>
                             <div className='modal-item'>
-                            <label htmlFor='category'>Choose category</label>
-                            <select name='category' id='category'>
-                            {/* {response.trivia_categories.map((category) => <option>{category.name}</option>)} */}
-                                {/* <option value='science'>{response.trivia_categories.map((category) => <option>{category.name}</option>)}</option> */}
-                        
-                            </select>
+                            <label htmlFor='category'>Choose a category</label>
+                            {/* <select name='category' id='category' onChange={handleCategory}>
+                            {response.trivia_categories.map(({id, name}) => <option key={id} value={id}>{name}</option> )}
+                            {/* <option>Option 1</option> 
+                            <option></option>
+                            </select> */}
+                             <select onChange={handleCategory}>
+                            {categories.map((category) => {
+                            return (
+                                <option key={category.id}>
+                                    {category.name}
+                                </option>
+                            );
+                            })}
+                        </select>
                             </div>
                             <div className='modal-item'>
                             <label htmlFor='difficulty'>Choose difficulty level</label>
-                            <select name='difficulty' id='difficulty'>
-
-                                <option value='easy'>Easy</option>
-                                <option value='medium'>Medium</option>
-                                <option value='hard'>Hard</option>
+                            <select name='difficulty' id='difficulty' onChange={handleDifficulty}>
+                            {difficultyOptions.map(({id, name}) => <option key={id} value={id}>{name}</option> )}
                             </select>
                             </div>
                             <div className='modal-item'>
                             <label htmlFor="number">Number of questions</label>
-                            <input onChange={handleChnage} type='number' id="number" name='number'></input>
+                            <input onChange={handleNumber} type='number' id="number" name='number'></input>
                             </div>
                             <div>
                             <button onClick={toggleModal}>Close</button>
