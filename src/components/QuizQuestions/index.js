@@ -9,21 +9,21 @@ const QuizQuestions = () => {
 
     const [questions, setQuestions] = useState({});
 
-   // Get quiz data from an API
-    useEffect(() => {
-        async function getQuestions() {
-            try {
-                const result = await axios.get(`https://opentdb.com/api.php?amount=${10}&category=${17}&difficulty=easy&type=multiple`);
-                const quizData = result.data.results[0]
-                console.log(quizData);
-                setQuestions(quizData);
-            } catch(err) {
-                console.error(err);
-            }
-        }
+//    // Get quiz data from an API
+//     useEffect(() => {
+//         async function getQuestions({number, category, level}) {
+//             try {
+//                 const result = await axios.get(`https://opentdb.com/api.php?amount=${10}&category=${17}&difficulty=easy&type=multiple`);
+//                 const quizData = result.data.results[0]
+//                 console.log(quizData);
+//                 setQuestions(quizData);
+//             } catch(err) {
+//                 console.error(err);
+//             }
+//         }
 
-        getQuestions();
-    }, []);
+//         getQuestions();
+//     }, []);
 
     return (
         <>
