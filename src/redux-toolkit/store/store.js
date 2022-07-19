@@ -10,6 +10,7 @@ import {
 import { usersSlice } from "./users";
 import systemMessageReducer from "./quizMessage";
 import connectedReducer from "./connected";
+import questionsSlice from './questions-slice';
 
 const store = configureStore({
   reducer: {
@@ -23,6 +24,7 @@ const store = configureStore({
     score: scoreSlice.reducer,
     systemMessage: systemMessageReducer,
     connected: connectedReducer,
+    questions: questionsSlice.reducer
   },
 });
 
