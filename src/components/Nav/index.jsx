@@ -10,6 +10,7 @@ const Nav = () => {
       <Link to="/loading">loading</Link>
       <Link to="/question">question</Link>
       <Link to="/waiting">waiting</Link>
+      <Link to="/homepage">homepage</Link>
     </nav>
   );
 };

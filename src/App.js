@@ -15,6 +15,7 @@ const App = () => {
         <Route path="/question" element={<Pages.QuestionPage />} />
         <Route path="/loading" element={<Pages.LoadingPage />} />
         <Route path="/finalresult" element={<Pages.FinalResultPage />} />
+		<Route path="/homepage" element={<Pages.LandingPage />} />
       </Route>
     </Routes>
   );
