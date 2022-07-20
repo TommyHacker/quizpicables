@@ -2,13 +2,17 @@ import React, { useEffect, useRef } from "react";
 import lottie from 'lottie-web';
 // import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography'
+import { useSelector } from "react-redux";
 
 const UserAvatar = () => {
 
-    const user1 = 1;
-    const user2 = 2;
-    const user3 = 3;
-    const user4 = 4;
+    const { players } = useSelector((state) => state.players);
+
+    // FUNCTION TO DEFINE MOVEMENT
+    const movementScore = () => {
+        
+    }
+    
 
     const userContainer = useRef(null);
 
@@ -26,61 +30,27 @@ const UserAvatar = () => {
 
     return (
         <>
-          <div className='userRow' style={{height: '70px', display: 'flex', flexDirection: 'flex-start', }}>
-            <div className='userName' style={{margin: 'auto 5px'}}>
-                <Typography style={{ color: 'white', fontSize:'1.2em', fontWeight: 'bold', margin:'auto'}}>
+         
                     {/* MERGE THROUGH USERNAME HERE */}
-                    Tom <br/>
-                    Score: 0   
-                </Typography>
-            </div>
-            <div className='userContainer' ref={userContainer} style={{marginLeft: '0%'}}>
-              {/* USER AVATAR GENERATES HERE */}
-            </div>
-          </div>
-      
+                     {players &&
+                            players.map((player, index) => {
+                            return (
+                                <div className='userRow' style={{height: '100px', display: 'flex', flexDirection: 'flex-start', }}>
+                                <div className='userName' style={{margin: 'auto 5px'}}>
+                                    <Typography style={{ color: 'white', fontSize:'1.2em', fontWeight: 'bold', margin:'auto'}}>
+                                        {player.username} <br/>
+                                        Score: { player.score } <br/>
+                                        Index: { index }
+                                    </Typography>
+                                </div>
+                                <div className='userContainer' ref={userContainer} style={{marginLeft: '0%'}}>
+                                {/* USER AVATAR GENERATES HERE */}
+                                </div>
+                            </div>
+                                
+                            );
+                            })}
 
-        {/* // DEMO VERISON ONLY */}
-
-        <div className='userRow' style={{height: '70px', display: 'flex', flexDirection: 'flex-start', }}>
-            <div className='userName' style={{margin: 'auto 5px'}}>
-                <Typography style={{ color: 'white', fontSize:'1.2em', fontWeight: 'bold', margin:'auto'}}>
-                    {/* MERGE THROUGH USERNAME HERE */}
-                    Syed <br/>
-                    Score: 0   
-                </Typography>
-            </div>
-            <div className='userContainer' ref={userContainer} style={{marginLeft: '0%'}}>
-              {/* USER AVATAR GENERATES HERE */}
-            </div>
-          </div>
-          <div className='userRow' style={{height: '70px', display: 'flex', flexDirection: 'flex-start', }}>
-          <div className='userName' style={{margin: 'auto 5px'}}>
-              <Typography style={{ color: 'white', fontSize:'1.2em', fontWeight: 'bold', margin:'auto'}}>
-                  {/* MERGE THROUGH USERNAME HERE */}
-                  Vlada <br/>
-                  Score: 0   
-              </Typography>
-          </div>
-          <div className='userContainer' ref={userContainer} style={{marginLeft: '0%'}}>
-            {/* USER AVATAR GENERATES HERE */}
-          </div>
-        </div>
-        <div className='userRow' style={{height: '70px', display: 'flex', flexDirection: 'flex-start', }}>
-            <div className='userName' style={{margin: 'auto 5px'}}>
-                <Typography style={{ color: 'white', fontSize:'1.2em', fontWeight: 'bold', margin:'auto'}}>
-                    {/* MERGE THROUGH USERNAME HERE */}
-                    Stu <br/>
-                    Score: 0   
-                </Typography>
-            </div>
-            <div className='userContainer' ref={userContainer} style={{marginLeft: '0%'}}>
-              {/* USER AVATAR GENERATES HERE */}
-            </div>
-          </div>
-        
-
-        {/* END OF DEMO */}
         </>
     )
 }

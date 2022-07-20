@@ -34,6 +34,8 @@
 
 
 import axios from "axios";
+import { useSelector } from "react-redux";
+
 
 const openDb = axios.create({
   baseURL: "https://opentdb.com",
@@ -44,3 +46,9 @@ export const getCategories = () => {
     return data;
   });
 };
+
+// export const getQuestions = () => {
+//   return openDb.get(`/api.php?amount=$10`).then(({ data }) => {
+//     return data;
+//   });
+// };
