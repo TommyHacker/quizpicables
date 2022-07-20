@@ -6,8 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { useSelector } from "react-redux";
 
 function ScoreBoard() {
+  const { score } = useSelector((state) => state.score);
   const rows = [
     { user: "QuizMaster", score: 1000 },
     { user: "QuizSenior", score: 750 },
@@ -15,7 +17,7 @@ function ScoreBoard() {
     { user: "QuizNoob", score: 250 },
     { user: "QuizLoser", score: 0 },
   ];
-
+  console.log(score);
   return (
     <div>
       <h1>Scores!</h1>
