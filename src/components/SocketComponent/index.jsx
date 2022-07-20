@@ -24,6 +24,8 @@ const SocketComponent = () => {
       dispatch(playersActions.setPlayers(data))
     );
     socket.on("message", ({ data }) => dispatch(messagesActions.update(data)));
+    // socket.on("next_question", () => )
+  
   }, []);
 
   useEffect(() => {
