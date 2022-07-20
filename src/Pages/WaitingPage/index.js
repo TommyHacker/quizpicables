@@ -19,7 +19,10 @@ const WaitingPage = () => {
       <button onClick={messageHandler}>message test</button>
 
       <h4>room number: {roomNumber}</h4>
-      <h4>players: {players.length}</h4>
+      <h4>players: </h4>
+      {players.map((player, index) => {
+        return <div key={index}>{player.username}</div>;
+      })}
       <h4>
         lateset socket message:{" "}
         {messages.length > 1 && messages[messages.length - 1]}
