@@ -29,11 +29,11 @@ const SettingsModal = () => {
 
   const [categories, setCategories] = useState([]);
 
-  //   useEffect(() => {
-  //     getCategories().then((categoriesFromApi) => {
-  //       setCategories(categoriesFromApi.trivia_categories);
-  //     });
-  //   }, []);
+  useEffect(() => {
+    getCategories().then((categoriesFromApi) => {
+      setCategories(categoriesFromApi.trivia_categories);
+    });
+  }, []);
 
   const difficultyOptions = [
     { id: "easy", name: "Easy" },

@@ -7,20 +7,26 @@ const QuestionPage = () => {
   //const { score } = useSelector((state) => state.scoreCounter);
   const dispatch = useDispatch();
   const [question, setQuestions] = useState([]);
+  const { questions } = useSelector((state) => state.questions);
 
   const {
-    question_category, question_difficulty, question_type, amount_of_questions, score
-  } = useSelector(state => state.questions);
-  
+    question_category,
+    question_difficulty,
+    question_type,
+    amount_of_questions,
+    score,
+  } = useSelector((state) => state.questions);
+
   useEffect(() => {
     getQuestions().then((questionsFromAPI) => {
-        setQuestions(questionsFromAPI.results)
+      setQuestions(questionsFromAPI.results);
     });
-    }, [])
+  }, []);
 
   return (
     <>
       <div>
+        {questions && <h1>questions : {questions.length}</h1>}
         <h4>Question 1</h4>
         <h4>This is a question?</h4>
         <div>

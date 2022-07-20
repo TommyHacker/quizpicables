@@ -8,6 +8,7 @@ const WaitingPage = () => {
   const { roomNumber } = useSelector((state) => state.roomNumber);
   const { messages } = useSelector((state) => state.messages);
   const { players } = useSelector((state) => state.players);
+
   const dispatch = useDispatch();
 
   const messageHandler = () => {
@@ -16,16 +17,17 @@ const WaitingPage = () => {
 
   return (
     <>
-      <button onClick={messageHandler}>message test</button>
-
       <h4>room number: {roomNumber}</h4>
-      <h4>players: </h4>
+      <h4>players: {players.length}</h4>
       {players.map((player, index) => {
         return <div key={index}>{player.username}</div>;
       })}
+
       <h4>
-        lateset socket message:{" "}
-        {messages.length > 1 && messages[messages.length - 1]}
+        lateset socket message:
+        <span style={{ marginLeft: "5px", fontWeight: "400" }}>
+          {messages.length > 1 && messages[messages.length - 1]}
+        </span>
       </h4>
       <h3>players</h3>
     </>
