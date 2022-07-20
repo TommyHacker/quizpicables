@@ -13,16 +13,12 @@ const questionsSlice = createSlice ({
     name:'questions',
     initialState: initialState,
     reducers: {
-        quizQuestions(state, action) {
-            return state; 
-        },
         changeCategory(state, action) {
             state.question_category = action.payload;
-
         },
 
         changeDifficulty(state, action) {
-            state.question_difficulty = action.payload
+            state.question_difficulty = action.payload;
 
         },
         changeAmount(state, action) {
@@ -36,6 +32,6 @@ const questionsSlice = createSlice ({
 
 })
 
-export const {quizQuestions, changeCategory, changeDifficulty, changeAmount, changeScore } = questionsSlice.actions;
+export const {changeCategory, changeDifficulty, changeAmount, changeScore } = questionsSlice.actions;
 
 export default questionsSlice;
