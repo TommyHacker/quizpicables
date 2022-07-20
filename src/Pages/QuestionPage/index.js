@@ -6,6 +6,9 @@ import { changeScore } from "../../redux-toolkit/store/questions-slice";
 import { useNavigate } from "react-router-dom";
 import { decode } from "html-entities";
 import axios from "axios";
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import Grid from '@mui/material/Grid'
 
 //Generating a random number
 const getRandomInt = (max) => {
@@ -82,36 +85,51 @@ const QuestionPage = () => {
        <UserAvatar/>
       </div>
        
-      
+      {/* QUESTION: DOES THIS HIDE THE QUESTION -AND- ANSWERS FROM THE GUEST USERS? */}
       {isHost ? (
-        <div>
-          <h4>Question {questionIndex + 1}</h4>
-          <h4>{decode(questions[questionIndex].question)}</h4>
-          <div>
+        
+        <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'column'}}>
+          <Typography style={{textAlign: 'center', fontSize: '1.3rem'}}>
+             <h1>Question {questionIndex + 1}</h1>
+             <h2>{decode(questions[questionIndex].question)}</h2>
+          </Typography>
+          
+          <div style={{display: 'flex', justifyContent: 'center', flexDirection: 'row', flexWrap: 'wrap'}}>
             {decode(
               options.map((data, id) => (
-                <button onClick={handleClickAnswer} key={id}>
-                  {data}
-                </button>
+                
+                    <Button onClick={handleClickAnswer} 
+                          variant="contained"
+                          style={{ flex: '34%', width: '480px', fontSize: '1.4em', fontWeight: "bold" }}
+                          sx={{ p: 5, m: 2.6 }}
+                          key={id}>
+                      {data}
+                    </Button>
               ))
             )}
           </div>
+
           <div>
-            <p>
+            <Typography style={{fontSize:'1.5em', textAlign: 'center', fontWeight: 'bold'}}>
               Score: {score} / {questions.length}
-            </p>
+            </Typography>
           </div>
         </div>
       ) : (
+        
         <div>
           <h4>Question {questionIndex + 1}</h4>
           <h4>{decode(questions[questionIndex].question)}</h4>
           <div>
             {decode(
               options.map((data, id) => (
-                <button onClick={handleClickAnswer} key={id}>
+                <Button onClick={handleClickAnswer} 
+                      variant="contained"
+                      style={{ fontWeight: "bold" }}
+                      sx={{ p: 3, m: 2.6 }}
+                      key={id}>
                   {data}
-                </button>
+                </Button>
               ))
             )}
           </div>
