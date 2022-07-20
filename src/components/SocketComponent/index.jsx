@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { socketController } from "../../helpers/socketClass";
 import { messagesActions } from "../../redux-toolkit/store/messages";
+import { playersActions } from "../../redux-toolkit/store/players";
 
 socketController.connect();
 
@@ -19,6 +20,9 @@ const SocketComponent = () => {
   );
 
   useEffect(() => {
+    socket.on("players", ({ data }) =>
+      dispatch(playersActions.setPlayers(data))
+    );
     socket.on("message", ({ data }) => dispatch(messagesActions.update(data)));
   }, []);
 
