@@ -16,7 +16,7 @@ const loadingPage = () => {
             render: 'svg',
             loop: true,
             autoplay: true,
-            animationData: require('../../assets/loading-icon.json')
+            animationData: require('../../assets/animations/loading-icon.json')
         })
     }, [])
 

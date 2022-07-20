@@ -1,3 +1,5 @@
+import UserAvatar  from '../../components/UserAvatar';
+import background from '../../assets/images/space-background.png'
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeScore } from "../../redux-toolkit/store/questions-slice";
@@ -73,8 +75,14 @@ const QuestionPage = () => {
 
   console.log(questions);
 
+
   return (
     <>
+     <div class='race-container' style={{height: '40%', background: '#ccc', padding: '15px', backgroundImage: `url(${background})`, backgroundRepeat:"no-repeat",backgroundSize:"cover", width:'100vw'}}>
+       <UserAvatar/>
+      </div>
+       
+      
       {isHost ? (
         <div>
           <h4>Question {questionIndex + 1}</h4>
@@ -116,6 +124,6 @@ const QuestionPage = () => {
       )}
     </>
   );
-};
+}
 
 export default QuestionPage;
