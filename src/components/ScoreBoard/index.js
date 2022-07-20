@@ -10,14 +10,17 @@ import { useSelector } from "react-redux";
 
 function ScoreBoard() {
   const { score } = useSelector((state) => state.score);
+  const { username } = useSelector((state) => state.username);
+
   const rows = [
     { user: "QuizMaster", score: 1000 },
     { user: "QuizSenior", score: 750 },
     { user: "Quizzer", score: 500 },
     { user: "QuizNoob", score: 250 },
-    { user: "QuizLoser", score: 0 },
+    { user: username, score: score },
   ];
-  console.log(score);
+  console.log(username, score);
+
   return (
     <div>
       <h1>Scores!</h1>
