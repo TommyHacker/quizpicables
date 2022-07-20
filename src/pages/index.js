@@ -14,4 +14,4 @@ export { default as QuestionPage } from "./QuestionPage";
 export { default as FinalResultPage } from "./FinalResultPage";
 
 //Landing pahe
-export {default as LandingPage} from './LandingPage'
+export {default as LandingPage} from './Landingpage'
