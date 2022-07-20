@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // if username has been dispatched, set state to given username
 const usernameSlice = createSlice({
   name: "username",
-  initialState: { username: "anonymous" },
+  initialState: { username: "Host" },
 
   reducers: {
     setUsername: (state, { payload }) => {
@@ -19,7 +19,16 @@ const isHostSlice = createSlice({
   reducers: {
     setIsHost: (state) => {
       console.log("ishost, payload: ", state.isHost);
-      state.isHost = !state.isHost;
+      switch (state.isHost) {
+        case false:
+          state.isHost = true;
+          break;
+        case true:
+          state.isHost = false;
+          break;
+        default:
+          return state.isHost;
+      }
     },
   },
 });

@@ -7,24 +7,22 @@ import {
   roomNumberSlice,
   scoreSlice,
 } from "./user";
-import { usersSlice } from "./users";
-import systemMessageReducer from "./quizMessage";
+import { messagesSlice } from "./messages";
 import connectedReducer from "./connected";
-import questionsSlice from './questions-slice';
+import questionsSlice from "./questions-slice";
 
 const store = configureStore({
   reducer: {
     scoreCounter: scoreReducer,
     joinModal: joinModalSlice.reducer,
     settingsModal: settingsModalSlice.reducer,
-    users: usersSlice.reducer,
     username: usernameSlice.reducer,
     isHost: isHostSlice.reducer,
     roomNumber: roomNumberSlice.reducer,
     score: scoreSlice.reducer,
-    systemMessage: systemMessageReducer,
+    messages: messagesSlice.reducer,
     connected: connectedReducer,
-    questions: questionsSlice.reducer
+    questions: questionsSlice.reducer,
   },
 });
 
