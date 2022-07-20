@@ -1,15 +1,31 @@
-import { configureStore } from '@reduxjs/toolkit';
-import scoreReducer from './counter';
-import {joinModalSlice, settingsModalSlice} from './modal-slice';
-import questionsSlice from './questions-slice';
+import { configureStore } from "@reduxjs/toolkit";
+import scoreReducer from "./counter";
+import { joinModalSlice, settingsModalSlice } from "./modal-slice";
+import {
+  usernameSlice,
+  isHostSlice,
+  roomNumberSlice,
+  scoreSlice,
+} from "./user";
+import { messagesSlice } from "./messages";
+import connectedReducer from "./connected";
+import questionsSlice from "./questions-slice";
+import { playersSlice } from "./players";
 
 const store = configureStore({
   reducer: {
     scoreCounter: scoreReducer,
     joinModal: joinModalSlice.reducer,
     settingsModal: settingsModalSlice.reducer,
-    questions: questionsSlice.reducer
+    players: playersSlice.reducer,
+    username: usernameSlice.reducer,
+    isHost: isHostSlice.reducer,
+    roomNumber: roomNumberSlice.reducer,
+    score: scoreSlice.reducer,
+    messages: messagesSlice.reducer,
+    connected: connectedReducer,
+    questions: questionsSlice.reducer,
   },
-})
+});
 
 export default store;

@@ -1,18 +1,24 @@
-import React, {useState, useEffect} from "react";
-import './GameSettings.css';
-import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+import "./GameSettings.css";
+import { useDispatch, useSelector } from "react-redux";
 import { settingsModalActions } from "../../redux-toolkit/store/modal-slice";
 //import useAxios from "../../hooks/useAxios";
 import { getCategories } from "../../hooks/useAxios";
-import { changeAmount, changeCategory, changeDifficulty } from "../../redux-toolkit/store/questions-slice";
-import  { useNavigate }  from "react-router-dom";
+import {
+  changeAmount,
+  changeCategory,
+  changeDifficulty,
+} from "../../redux-toolkit/store/questions-slice";
+import { roomNumberActions } from "../../redux-toolkit/store/user";
+import { isHostActions } from "../../redux-toolkit/store/user";
+import { useNavigate } from "react-router-dom";
+import { socketController } from "../../helpers/socketClass";
 
 //MATERIAL UI
-import Button from '@mui/material/Button';
-import Grid from '@mui/material/Grid';
+import Button from "@mui/material/Button";
+import Grid from "@mui/material/Grid";
 
 const SettingsModal = () => {
-
    //const {response, error, loading } = useAxios({url: "/api_category.php"});
    const [number, setNumber] = useState(0);
    const [difficulty, setDifficulty] = useState('');
@@ -51,12 +57,16 @@ const SettingsModal = () => {
         dispatch(settingsModalActions.toggleSettingsModal());
     }
 
-
+    
     const handleSubmit = (e) => {
-        e.preventDefault();
-        navigate("/question");
-
-    }
+    e.preventDefault();
+    // joins user to private room with random room ID
+    socketController.host(true);
+    dispatch(isHostActions.setIsHost());
+    socketController.createRoom();
+    dispatch(roomNumberActions.setRoomNumber(socketController.roomNumber));
+    navigate("/waiting");
+  };
 
     const handleNumber = (e) => {
         setNumber(e.target.value);
