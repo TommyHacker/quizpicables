@@ -23,7 +23,6 @@ const SettingsModal = () => {
   const [number, setNumber] = useState(0);
   const [difficulty, setDifficulty] = useState("");
   const [category, setCategory] = useState("");
-  const { isHost } = useSelector((state) => state.isHost);
 
   const navigate = useNavigate();
 
@@ -34,6 +33,16 @@ const SettingsModal = () => {
       setCategories(categoriesFromApi.trivia_categories);
     });
   }, []);
+
+  const categoryId = (categoryName) => {
+    let id = 0;
+    for (let i = 0; i < categories.length; i++) {
+      if (categories[i].name === categoryName) {
+        id = categories[i].id;
+      }
+    }
+    return id;
+  };
 
   const difficultyOptions = [
     { id: "easy", name: "Easy" },
@@ -65,12 +74,14 @@ const SettingsModal = () => {
 
   const handleDifficulty = (e) => {
     setDifficulty(e.target.value);
-    dispatch(changeCategory(e.target.value));
+    dispatch(changeDifficulty(e.target.value));
   };
 
   const handleCategory = (e) => {
+    e.preventDefault();
     setCategory(e.target.value);
-    dispatch(changeDifficulty(e.target.value));
+    const id = categoryId(e.target.value);
+    dispatch(changeCategory(id));
   };
 
   return (
@@ -99,7 +110,7 @@ const SettingsModal = () => {
                 <label htmlFor="category">Choose a category</label>
                 <select onChange={handleCategory}>
                   {categories.map((category) => {
-                    return <option key={category.id}>{category.name}</option>;
+                    return <option key={category.id}> {category.name}</option>;
                   })}
                 </select>
               </div>
