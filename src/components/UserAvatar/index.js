@@ -15,6 +15,7 @@ const UserAvatar = () => {
     const userContainer1 = useRef(null);
 
     // PASS IN { userID } to animationData: require('../../assets/userAvatar{ userID }.json')
+    // USESTATE ??? <----------------------------------------------------------------------------------
     useEffect(() => {
         lottie.loadAnimation({
             container: userContainer1.current,
@@ -38,7 +39,7 @@ const UserAvatar = () => {
                                     <Typography style={{ color: 'white', fontSize:'1.2em', fontWeight: 'bold', margin:'auto', textAlign: 'right' }}>
                                         {player.username} <br/>
                                         Score: { player.score } <br/>
-                                        Index: { index }
+                                        {/* Index: { index } */}
                                     </Typography>
                                 </div>
                                 <div ref={userContainer1} style={{ height: '115px'}}>

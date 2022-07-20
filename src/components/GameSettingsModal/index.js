@@ -130,7 +130,7 @@ const SettingsModal = () => {
               </div>
               <div className="modal-item">
                 <label htmlFor="number">Number of questions</label>
-                <input
+                <input placeholder="1"
                   onChange={handleNumber}
                   type="number"
                   id="number"
