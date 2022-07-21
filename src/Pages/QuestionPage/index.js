@@ -18,10 +18,7 @@ const QuestionPage = () => {
   const [questions, setQuestions] = useState([{ incorrect_answers: [] }]);
   const [questionIndex, setQuestionIndex] = useState(0);
   const [options, setOptions] = useState([]);
-  const [turnsCounter, setTurnsCounter] = useState(0);
   const { players } = useSelector((state) => state.players);
-  const [playersLength, setplayersLength] = useState(players.length);
-  const [turns, setTurns] = useState(0);
   const [turnTaken, setTurnTaken] = useState(false);
 
   const { question_category, question_difficulty, amount_of_questions, score } =
@@ -30,35 +27,25 @@ const QuestionPage = () => {
   const { username } = useSelector((state) => state.username);
   const { isHost } = useSelector((state) => state.isHost);
   const { playerMovesCount } = useSelector((state) => state.playerMovesCount);
-  const [howMany, setHowMany] = useState(0);
   const [endGame, setEndGame] = useState(false);
 
   useEffect(() => {
     socket.on("turns_logged", ({ data }) => {
-      // setQuestionIndex((prev) => prev + 1);
       console.log("incrementing moves data:", data);
       dispatch(playerMovesCountActions.increment(data));
       console.log("incrementing moves");
-      // console.log("next move triggered");
-      setTurnTaken(false);
     });
   }, [handleTurn]);
 
   useEffect(() => {
     socket.on("reset", ({ data }) => {
-      // console.log("reset triggered");
       dispatch(playerMovesCountActions.reset());
-      // setTurns(0);
     });
   }, [handleReset]);
 
   useEffect(() => {
-    // setup triggered
-    // if socket sends user "setup-quiz" method
     socket.on("setup_quiz", async ({ data, howMany }) => {
       if (!isHost) {
-        // console.log("setup-triggered");
-        // store quiz data in questions state
         setQuestions(data);
         setHowMany({ howMany });
       }
@@ -74,7 +61,6 @@ const QuestionPage = () => {
   }, [handleNextQuestion]);
 
   const handleTurn = useCallback(() => {
-    // dispatch(playerMovesCountActions.increment());
 
     socket.emit("turn_taken", { data: playerMovesCount });
   });
@@ -100,20 +86,14 @@ const QuestionPage = () => {
   useEffect(() => {
     if (!isHost) {
       socket.on("setup_quiz", ({ data, howMany }) => {
-        // console.log("non host player got this data, ", data);
         setQuestions(data);
         setHowMany(howMany);
       });
     }
-    // if (isHost) {
-    // socket.on("setup_quiz", ({ data, howMany }) => {
-    // setHowMany(howMany);
-    // });
   }, []);
 
   //Fetching quiz data:
 
-  //   if (isHost) {
   async function fetchData() {
     try {
       const response = await axios.get(
@@ -121,7 +101,6 @@ const QuestionPage = () => {
       );
       const data = await response.data;
       setQuestions(data.results);
-      // console.log("host fetch, set data to ", data);
       return data.results;
     } catch (err) {
       console.log(err);
@@ -139,25 +118,6 @@ const QuestionPage = () => {
       handleSetup();
     }
   }, []);
-  // useEffect(() => {
-  //   if (isHost) {
-  //     async function fetchData() {
-  //       try {
-  //         const response = await axios.get(
-  //           `https://opentdb.com/api.php?amount=${amount_of_questions}&difficulty=${question_difficulty}&category=${question_category}`
-  //         );
-  //         const data = await response.data;
-  //         setQuestions(data.results);
-  //         console.log("host fetch, set data to ", data);
-  //         handleSetup();
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     }
-  //     fetchData();
-  //   }
-  // }, []);
-
   // Adding a correct answer to an array of incorect answers at a random position
   useEffect(() => {
     if (questions.length) {
@@ -182,12 +142,6 @@ const QuestionPage = () => {
       await dispatch(changeScore(score + 1));
       socket.emit("update_score", { username, score: score + 1 });
     }
-    // console.log(
-    //   "questionindex: ",
-    //   questionIndex,
-    //   "questions length: ",
-    //   questions.length
-    // );
     if (questionIndex + 1 < questions.length) {
       console.log(
         `questionindex: ${questionIndex} questionslength: ${questions.length}`
@@ -210,16 +164,6 @@ const QuestionPage = () => {
       setEndGame(true);
     }
 
-    // if (questionIndex + 1 < questions.length) {
-    //   handleTurn();
-    //   if (turns + 1 == playersLength) {
-    //     setQuestionIndex(questionIndex + 1);
-
-    //     handleReset();
-    //   }
-    // } else {
-    //   navigate("/finalresult");
-    // }
   };
 
   return (
@@ -246,7 +190,6 @@ const QuestionPage = () => {
           <p>
             Score: {score} / {questions.length}
           </p>
-          <p>{turnsCounter}</p>
         </div>
       </div>
     </>
