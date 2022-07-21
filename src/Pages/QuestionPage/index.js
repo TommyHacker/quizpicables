@@ -1,10 +1,15 @@
 import React, { useEffect, useCallback, useState } from "react";
+import UserAvatar from "../../components/UserAvatar";
+import background from "../../assets/images/space-background.png";
 import { useDispatch, useSelector } from "react-redux";
 import { changeScore } from "../../redux-toolkit/store/questions-slice";
 import { playerMovesCountActions } from "../../redux-toolkit/store/playerMovesCount";
 import { useNavigate } from "react-router-dom";
 import { decode } from "html-entities";
 import axios from "axios";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+// import './style.css';
 
 //Generating a random number
 const getRandomInt = (max) => {
@@ -61,7 +66,6 @@ const QuestionPage = () => {
   }, [handleNextQuestion]);
 
   const handleTurn = useCallback(() => {
-
     socket.emit("turn_taken", { data: playerMovesCount });
   });
   const handleReset = useCallback(() => {
@@ -163,33 +167,76 @@ const QuestionPage = () => {
       console.log("end game");
       setEndGame(true);
     }
-
   };
 
   return (
     <>
-      <div>
-        <h4>Question {questionIndex + 1}</h4>
-        {questions[questionIndex] ? (
-          <h4>{decode(questions[questionIndex].question)}</h4>
-        ) : (
-          ""
-        )}
-        {!turnTaken && (
-          <div>
-            {decode(
-              options.map((data, id) => (
-                <button onClick={handleClickAnswer} key={id}>
-                  {data}
-                </button>
-              ))
-            )}
-          </div>
-        )}
+      <div
+        class="race-container"
+        style={{
+          height: "40%",
+          background: "#ccc",
+          padding: "15px",
+          backgroundImage: `url(${background})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          width: "110%",
+        }}
+      >
+        <UserAvatar />
+      </div>
+
+      {/* QUESTION: DOES THIS HIDE THE QUESTION -AND- ANSWERS FROM THE GUEST USERS? */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          flexDirection: "column",
+        }}
+      >
+        <Typography style={{ textAlign: "center", fontSize: "1.3rem" }}>
+          <h1>Question {questionIndex + 1}</h1>
+          <h2>{decode(questions[questionIndex].question)}</h2>
+        </Typography>
+
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "row",
+            flexWrap: "wrap",
+          }}
+        >
+          {decode(
+            options.map((data, id) => (
+              <Button
+                onClick={handleClickAnswer}
+                variant="contained"
+                style={{
+                  flex: "34%",
+                  width: "480px",
+                  fontSize: "1.4em",
+                  fontWeight: "bold",
+                }}
+                sx={{ p: 5, m: 2.6 }}
+                key={id}
+              >
+                {data}
+              </Button>
+            ))
+          )}
+        </div>
+
         <div>
-          <p>
+          <Typography
+            style={{
+              fontSize: "1.5em",
+              textAlign: "center",
+              fontWeight: "bold",
+            }}
+          >
             Score: {score} / {questions.length}
-          </p>
+          </Typography>
         </div>
       </div>
     </>

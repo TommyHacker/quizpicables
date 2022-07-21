@@ -17,9 +17,11 @@ import { socketController } from "../../helpers/socketClass";
 //MATERIAL UI
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import {CircularProgress } from "@mui/material";
+import { Box } from "@mui/system";
+
 
 const SettingsModal = () => {
-  //const {response, error, loading } = useAxios({url: "/api_category.php"});
   const [number, setNumber] = useState(0);
   const [difficulty, setDifficulty] = useState("");
   const [category, setCategory] = useState("");
@@ -104,7 +106,14 @@ const SettingsModal = () => {
               X
             </Button>
           </div>
-          <div className="modal-body">
+          <div className="modal-content">
+          { categories.length === 0 ? 
+            <Box style={{ display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            margin: "auto",height:"400px"}}>
+            <CircularProgress size="70px" />
+             </Box> : 
             <form>
               <div className="modal-item">
                 <label htmlFor="category">Choose a category</label>
@@ -130,7 +139,7 @@ const SettingsModal = () => {
               </div>
               <div className="modal-item">
                 <label htmlFor="number">Number of questions</label>
-                <input
+                <input placeholder="1"
                   onChange={handleNumber}
                   type="number"
                   id="number"
@@ -159,6 +168,7 @@ const SettingsModal = () => {
                 </Grid>
               </div>
             </form>
+           }
           </div>
         </div>
       </div>

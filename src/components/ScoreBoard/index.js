@@ -6,6 +6,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
+
+
 
 function ScoreBoard() {
   const rows = [
@@ -16,23 +21,29 @@ function ScoreBoard() {
     { user: "QuizLoser", score: 0 },
   ];
 
+  const navigate = useNavigate();
+
+	const handleMove = (e) => {
+		e.preventDefault();
+		navigate("/");
+	  };
+
   return (
     <div>
-      <h1>Scores!</h1>
-      <br></br>
-      <h2>Dummy table</h2>
-
+      <Typography style={{color:'white', margin: '25px auto', textAlign: 'center', fontSize: '2rem' }}>
+        <h1>Final Results</h1>
+        </Typography>
       <div>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 500 }} aria-label="a dense table">
+        <TableContainer style={{marginLeft:'12.5%'}} >
+          <Table component={Paper} style={{ width: '75%' }} aria-label="a dense table">
             {/* Table head */}
 
-            <TableHead>
+            <TableHead >
               <TableRow
-                sx={{ "&:first-of-type td, &:first-of-type th": { border: 5 } }}
+                sx={{ "&:first-child td, &:first-child th": { borderBottom: 2 } }}
               >
-                <TableCell align="center">Users</TableCell>
-                <TableCell align="center">Scores</TableCell>
+                <TableCell style={{fontSize: '2rem'}}  align="center">User:</TableCell>
+                <TableCell style={{fontSize: '2rem'}}  align="center">Score</TableCell>
               </TableRow>
             </TableHead>
 
@@ -44,17 +55,29 @@ function ScoreBoard() {
                   key={row.user}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell align="center" component="th" scope="row">
+                  <TableCell style={{fontSize: '2rem'}}  align="center" component="th" scope="row">
                     {row.user}
                   </TableCell>
-                  <TableCell align="center">{row.score}</TableCell>
+                  <TableCell style={{fontSize: '2rem'}}  align="center">{row.score}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
+        
+        <div style={{display: 'flex', justifyContent: 'center', marginTop: '25px'}}>
+          <Button
+            onClick={handleMove}
+            variant="contained"
+            style={{ fontWeight: "bold", height: "50px", width: '200px' }}
+            sx={{ p: 4, m: 2.6 }}>
+            <h2>Play Again?</h2>
+          </Button>
+        </div>
       </div>
     </div>
+
+  
   );
 }
 
