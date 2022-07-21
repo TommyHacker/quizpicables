@@ -26,23 +26,12 @@ function ScoreBoard({}) {
 
   return (
     <div>
-      <Typography
-        style={{
-          color: "white",
-          margin: "25px auto",
-          textAlign: "center",
-          fontSize: "2rem",
-        }}
-      >
+      <Typography style={{color:'white', margin: '25px auto', textAlign: 'center', fontSize: '2rem', letterSpacing: '3.5px', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F' }}>
         <h1>Final Results</h1>
-      </Typography>
+        </Typography>
       <div>
-        <TableContainer style={{ marginLeft: "12.5%" }}>
-          <Table
-            component={Paper}
-            style={{ width: "75%" }}
-            aria-label="a dense table"
-          >
+        <TableContainer style={{marginLeft:'12.5%'}} >
+          <Table component={Paper} style={{ width: '75%' }} aria-label="a dense table">
             {/* Table head */}
 
             <TableHead>
@@ -85,25 +74,25 @@ function ScoreBoard({}) {
           </Table>
         </TableContainer>
 
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "25px",
-          }}
-        >
-          <Button
-            onClick={handleMove}
-            variant="contained"
-            style={{ fontWeight: "bold", height: "50px", width: "200px" }}
-            sx={{ p: 4, m: 2.6 }}
-          >
-            <h2>Play Again?</h2>
-          </Button>
-        </div>
-      </div>
-    </div>
-  );
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						marginTop: '25px',
+					}}
+				>
+					<Button
+						onClick={handleMove}
+						variant='contained'
+						style={{ fontWeight: 'bold', height: '80px', width: '300px' }}
+						sx={{ p: 3, m: 2.6 }}
+					>
+						<h2>Play Again?</h2>
+					</Button>
+				</div>
+			</div>
+		</div>
+	);
 }
 
 export default ScoreBoard;
