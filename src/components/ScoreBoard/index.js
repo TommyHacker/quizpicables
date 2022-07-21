@@ -6,15 +6,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { useSelector } from "react-redux";
 
 import Typography from "@mui/material/Typography";
 
 function ScoreBoard() {
-  const { score } = useSelector((state) => state.score);
-  const { username } = useSelector((state) => state.username);
-  const { players } = useSelector((state) => state.players);
-  console.log(players);
   const rows = [
     { user: "QuizMaster", score: 1000 },
     { user: "QuizSenior", score: 750 },
@@ -47,13 +42,13 @@ function ScoreBoard() {
             {/* Table Body */}
 
             <TableBody>
-              {players.map((row) => (
+              {rows.map((row) => (
                 <TableRow
-                  key={row.username}
+                  key={row.user}
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
-                  <TableCell align="center" component="th" scope="row">
-                    {row.username}
+                  <TableCell style={{fontSize: '2rem'}}  align="center" component="th" scope="row">
+                    {row.user}
                   </TableCell>
                   <TableCell style={{fontSize: '2rem'}}  align="center">{row.score}</TableCell>
                 </TableRow>
