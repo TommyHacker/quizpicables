@@ -6,8 +6,8 @@ export const playerMovesCountSlice = createSlice({
   initialState: { playerMovesCount: 0 },
 
   reducers: {
-    increment: (state) => {
-      state.playerMovesCount = state.playerMovesCount + 1;
+    increment: (state, { payload }) => {
+      state.playerMovesCount = payload;
     },
     reset: (state) => {
       state.playerMovesCount = 0;

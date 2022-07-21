@@ -22,6 +22,7 @@ const QuestionPage = () => {
   const { players } = useSelector((state) => state.players);
   const [playersLength, setplayersLength] = useState(players.length);
   const [turns, setTurns] = useState(0);
+  const [turnTaken, setTurnTaken] = useState(false);
 
   const { question_category, question_difficulty, amount_of_questions, score } =
     useSelector((state) => state.questions);
@@ -30,19 +31,22 @@ const QuestionPage = () => {
   const { isHost } = useSelector((state) => state.isHost);
   const { playerMovesCount } = useSelector((state) => state.playerMovesCount);
   const [howMany, setHowMany] = useState(0);
+  const [endGame, setEndGame] = useState(false);
 
   useEffect(() => {
-    socket.on("turns_logged", (data) => {
-      console.log("next move triggered");
-      dispatch(playerMovesCountActions.increment());
-      // setTurns(data);
+    socket.on("turns_logged", ({ data }) => {
+      // setQuestionIndex((prev) => prev + 1);
+      console.log("incrementing moves data:", data);
+      dispatch(playerMovesCountActions.increment(data));
+      console.log("incrementing moves");
+      // console.log("next move triggered");
+      setTurnTaken(false);
     });
   }, [handleTurn]);
 
   useEffect(() => {
     socket.on("reset", ({ data }) => {
-      console.log("reset triggered");
-
+      // console.log("reset triggered");
       dispatch(playerMovesCountActions.reset());
       // setTurns(0);
     });
@@ -50,26 +54,29 @@ const QuestionPage = () => {
 
   useEffect(() => {
     // setup triggered
-    if (!isHost) {
-      // if socket sends user "setup-quiz" method
-      socket.on("setup_quiz", async ({ data, howMany }) => {
-        console.log("setup-triggered");
+    // if socket sends user "setup-quiz" method
+    socket.on("setup_quiz", async ({ data, howMany }) => {
+      if (!isHost) {
+        // console.log("setup-triggered");
         // store quiz data in questions state
         setQuestions(data);
         setHowMany({ howMany });
-      });
-    }
+      }
+    });
   }, [handleSetup]);
 
   useEffect(() => {
     socket.on("increment_question", () => {
+      setQuestionIndex((prev) => prev + 1);
       console.log("next question triggered");
-      setQuestionIndex(questionIndex + 1);
+      setTurnTaken(false);
     });
-  }, [handleNextQuestion, questionIndex]);
+  }, [handleNextQuestion]);
 
   const handleTurn = useCallback(() => {
-    socket.emit("turn_taken", { data: turns });
+    // dispatch(playerMovesCountActions.increment());
+
+    socket.emit("turn_taken", { data: playerMovesCount });
   });
   const handleReset = useCallback(() => {
     socket.emit("reset_turns");
@@ -79,44 +86,81 @@ const QuestionPage = () => {
     socket.emit("next_question");
   });
 
-  const handleSetup = useCallback(() => {
-    socket.emit("setup_quiz", {
-      data: questions,
-    });
+  const handleSetup = useCallback(async () => {
+    if (isHost) {
+      const questions = await fetchData();
+      socket.emit("setup_quiz", {
+        data: questions,
+      });
+    }
   });
 
   // once host has quiz data, request that host passes it through socket.
 
   useEffect(() => {
-    if (isHost) {
+    if (!isHost) {
       socket.on("setup_quiz", ({ data, howMany }) => {
+        // console.log("non host player got this data, ", data);
+        setQuestions(data);
         setHowMany(howMany);
       });
     }
-  }, [handleSetup]);
+    // if (isHost) {
+    // socket.on("setup_quiz", ({ data, howMany }) => {
+    // setHowMany(howMany);
+    // });
+  }, []);
 
   //Fetching quiz data:
+
+  //   if (isHost) {
+  async function fetchData() {
+    try {
+      const response = await axios.get(
+        `https://opentdb.com/api.php?amount=${amount_of_questions}&difficulty=${question_difficulty}&category=${question_category}`
+      );
+      const data = await response.data;
+      setQuestions(data.results);
+      // console.log("host fetch, set data to ", data);
+      return data.results;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  useEffect(() => {
+    if (endGame) {
+      navigate("/finalresult");
+    }
+  }, [endGame]);
+
   useEffect(() => {
     if (isHost) {
-      async function fetchData() {
-        try {
-          const response = await axios.get(
-            `https://opentdb.com/api.php?amount=${amount_of_questions}&difficulty=${question_difficulty}&category=${question_category}`
-          );
-          const data = await response.data;
-          setQuestions(data.results);
-        } catch (err) {
-          console.log(err);
-        }
-      }
-      fetchData();
+      handleSetup();
     }
-    handleSetup();
   }, []);
+  // useEffect(() => {
+  //   if (isHost) {
+  //     async function fetchData() {
+  //       try {
+  //         const response = await axios.get(
+  //           `https://opentdb.com/api.php?amount=${amount_of_questions}&difficulty=${question_difficulty}&category=${question_category}`
+  //         );
+  //         const data = await response.data;
+  //         setQuestions(data.results);
+  //         console.log("host fetch, set data to ", data);
+  //         handleSetup();
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     }
+  //     fetchData();
+  //   }
+  // }, []);
 
   // Adding a correct answer to an array of incorect answers at a random position
   useEffect(() => {
-    if (questions.length > 1) {
+    if (questions.length) {
       const question = questions[questionIndex];
       let answers = [...question.incorrect_answers];
       answers.splice(
@@ -126,27 +170,44 @@ const QuestionPage = () => {
       );
       setOptions(answers);
     }
-  }, [questions.length]);
+  }, [questions, questionIndex]);
 
   // Increasing score if the answer is correct and moving to the next question
   const handleClickAnswer = async (e) => {
+    if (turnTaken) return;
+    // dispatch(playerMovesCountActions.increment());
+    setTurnTaken(true);
     const question = questions[questionIndex];
     if (e.target.textContent === question.correct_answer) {
       await dispatch(changeScore(score + 1));
       socket.emit("update_score", { username, score: score + 1 });
     }
-    console.log(
-      "questionindex: ",
-      questionIndex,
-      "questions length: ",
-      questions.length
-    );
+    // console.log(
+    //   "questionindex: ",
+    //   questionIndex,
+    //   "questions length: ",
+    //   questions.length
+    // );
     if (questionIndex + 1 < questions.length) {
-      console.log("still more questions, so handleNextQuestion");
-      handleNextQuestion();
+      console.log(
+        `questionindex: ${questionIndex} questionslength: ${questions.length}`
+      );
+      if (playerMovesCount + 1 < players.length) {
+        handleTurn();
+        console.log(
+          `player move count ${playerMovesCount} players length ${players.length} still moves left, so wait for more moves`
+        );
+      } else {
+        handleNextQuestion();
+        handleReset();
+        console.log("next questions!");
+        console.log(
+          `player move count ${playerMovesCount} players length ${players.length} still more questions, so handleNextQuestion`
+        );
+      }
     } else {
-      console.log("no more questions left, finishing the game");
-      navigate("/finalresult");
+      console.log("end game");
+      setEndGame(true);
     }
 
     // if (questionIndex + 1 < questions.length) {
@@ -170,15 +231,17 @@ const QuestionPage = () => {
         ) : (
           ""
         )}
-        <div>
-          {decode(
-            options.map((data, id) => (
-              <button onClick={handleClickAnswer} key={id}>
-                {data}
-              </button>
-            ))
-          )}
-        </div>
+        {!turnTaken && (
+          <div>
+            {decode(
+              options.map((data, id) => (
+                <button onClick={handleClickAnswer} key={id}>
+                  {data}
+                </button>
+              ))
+            )}
+          </div>
+        )}
         <div>
           <p>
             Score: {score} / {questions.length}
