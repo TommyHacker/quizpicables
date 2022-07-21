@@ -11,10 +11,9 @@
     .mobile-shrink{
         font-size: 0.2rem;
     }
-    .loadingAnimation{
-        height: 200px;
-        width: 200px;
-    }
+    svg{
+        display:none;
+    } 
 }
 
 @media (min-width: 767px) {

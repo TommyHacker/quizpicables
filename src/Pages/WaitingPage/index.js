@@ -44,6 +44,10 @@ const WaitingPage = () => {
           <Typography className='mobile-remove' style={{fontSize: '4.2rem', textAlign: 'center', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F'}}>
             Room Number: {roomNumber}
             </Typography>
+             {/* ------------------------------ HOST SCREEN --------------------------------------------- */}
+          <Typography className='host-screen' style={{textAlign: 'center', fontSize: '4rem', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F, 20px 20px 200px #000000 ' }}>
+              Please Wait ...
+        </Typography> 
             <div className="info-container">
               <Typography  className='mobile-remove' style={{fontSize: '2.5rem', textDecoration: 'underline', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F'}}>
                 Player Amount: {players.length} <br/>
@@ -64,8 +68,8 @@ const WaitingPage = () => {
            </div>                   
     
  {/* ------------------------------ LOADING ANIMATIONn--------------------------------------------- */}               
-      <div className='loadinganimation' style={{display: 'flex', justifyContent: 'center', width: '30%', margin: 'auto'}}>
-        <div ref={container}> </div>
+      <div className='loadinganimation' style={{display: 'flex', justifyContent: 'center', width: '700px', margin: '50px auto'}}>
+          <div ref={container}> </div>
       </div>
 
  {/* ------------------------------ MOBILE SCREEN --------------------------------------------- */}      
@@ -81,14 +85,10 @@ const WaitingPage = () => {
       // Importing Dependencies<br/> <span className='complete'>COMPLETE</span>
       <br/>
       <br/>
-      // Tests Complete
-      // Your host will start the game shortly.
+         // Your host will start the game shortly.
       </Typography>
          
- {/* ------------------------------ HOST SCREEN --------------------------------------------- */}
-          <Typography className='host-screen' style={{textAlign: 'center', fontSize: '4rem', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F, 20px 20px 200px #000000 ' }}>
-              Please Wait ...
-        </Typography> 
+
       
       </div>
      
