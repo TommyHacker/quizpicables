@@ -62,7 +62,7 @@ const LandingPage = () => {
             onClick={toggleSettingsModal}
             variant="contained"
             style={{ fontWeight: "bold" }}
-            sx={{ p: 3, m: 0 }}
+            sx={{ p: 3, m: 2.6 }}
           >
             Create Room
           </Button>

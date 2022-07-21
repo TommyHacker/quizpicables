@@ -22,6 +22,10 @@
     }
 }
 
+svg{
+    z-index: 0;
+}
+
 .complete{
     color: rgb(68, 178, 68);
 }

@@ -46,11 +46,11 @@ const WaitingPage = () => {
             Room number: {roomNumber}
             </Typography>
             <div className="info-container">
-              <Typography  className='mobile-remove' style={{fontSize: '2rem', textDecoration: 'underline', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F'}}>
+              <Typography  className='mobile-remove' style={{fontSize: '2.5rem', textDecoration: 'underline', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F'}}>
                 Player Amount: {players.length} <br/>
               </Typography>
               {players.map((player, index) => {
-                return <Typography style={{fontSize: '2rem', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F' }} key={index}>{player.username}</Typography>;
+                return <Typography style={{fontSize: '2.5rem', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F' }} key={index}>{player.username}</Typography>;
               })}
 
               {/* <Typography style={{fontSize: '2rem' }}>
@@ -61,11 +61,11 @@ const WaitingPage = () => {
               </Typography> */}
               {/* <Typography style={{fontSize: '2rem' }}>Players</Typography> */}
               {isHost && <Button variant="contained"
-                              style={{ fontWeight: "bold", height: "50px" }} onClick={() => navigateHandler()}>Start Game</Button>}
+                              style={{ fontWeight: "bold", height: "120px", width: '290px', fontSize: '2rem', marginTop: '25px' }} onClick={() => navigateHandler()}>LAUNCH GAME</Button>}
            </div>                   
     
  {/* ------------------------------ LOADING ANIMATIONn--------------------------------------------- */}               
-      <div style={{display: 'flex', justifyContent: 'center', height: '350px'}}>
+      <div style={{display: 'flex', justifyContent: 'center', height: '350px', width: '300px', margin: 'auto'}}>
         <div ref={container}> </div>
       </div>
 
@@ -87,8 +87,8 @@ const WaitingPage = () => {
       </Typography>
          
  {/* ------------------------------ HOST SCREEN --------------------------------------------- */}
-          <Typography className='host-screen' style={{textAlign: 'center', fontSize: '4rem', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F ' }}>
-                // Please Wait for Mission Control //
+          <Typography className='host-screen' style={{textAlign: 'center', fontSize: '4rem', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F, 20px 20px 200px #FFFFFF ' }}>
+                // Please Wait 
         </Typography> 
       
       </div>

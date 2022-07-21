@@ -182,13 +182,14 @@ const QuestionPage = () => {
       <div
         className="race-container"
         style={{
-          height: "43%",
+          height: "45%",
           background: "#ccc",
           padding: "15px",
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          width: "110%",
+          width: "100%",
+          padding: '4px'
         }}
       >
         {players &&
@@ -236,7 +237,7 @@ const QuestionPage = () => {
                   fontSize: "1.4em",
                   fontWeight: "bold",
                 }}
-                sx={{ p: 5, m: 2.6 }}
+                sx={{ p: 2, m: 2.6 }}
                 key={id}
               >
                 {data}
