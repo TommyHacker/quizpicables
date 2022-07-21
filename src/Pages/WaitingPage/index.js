@@ -64,7 +64,7 @@ const WaitingPage = () => {
            </div>                   
     
  {/* ------------------------------ LOADING ANIMATIONn--------------------------------------------- */}               
-      <div className='loadinganimation' style={{display: 'flex', justifyContent: 'center', width: '30vw', margin: 'auto'}}>
+      <div className='loadinganimation' style={{display: 'flex', justifyContent: 'center', width: '30%', margin: 'auto'}}>
         <div ref={container}> </div>
       </div>
 
