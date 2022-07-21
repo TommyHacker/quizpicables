@@ -89,7 +89,13 @@ const WaitingPage = () => {
       </Typography> */}
 				{/* <Typography style={{fontSize: '2rem' }}>Players</Typography> */}
 				{isHost && (
-					<Button onClick={() => navigateHandler()}>Start Game</Button>
+					<Button
+						variant='contained'
+						style={{ fontWeight: 'bold', height: '50px' }}
+						onClick={() => navigateHandler()}
+					>
+						Start Game
+					</Button>
 				)}
 
 				<div
