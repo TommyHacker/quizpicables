@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import background from '../../assets/images/background8.jpg';
 import lottie from 'lottie-web';
-import Grid from '@mui/material/Grid';
+import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography'
 
 const WaitingPage = () => {

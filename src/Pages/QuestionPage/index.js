@@ -195,6 +195,7 @@ const QuestionPage = () => {
           players.map((player, i) => {
             return (
               <UserAvatar
+                key={i+50}
                 player={player}
                 index={i}
                 avatarSrc={`userAvatar${i}.json`}
