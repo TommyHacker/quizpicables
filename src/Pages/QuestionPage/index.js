@@ -6,9 +6,9 @@ import { changeScore } from "../../redux-toolkit/store/questions-slice";
 import { useNavigate } from "react-router-dom";
 import { decode } from "html-entities";
 import axios from "axios";
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import Grid from '@mui/material/Grid'
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+// import './style.css';
 
 //Generating a random number
 const getRandomInt = (max) => {
@@ -81,7 +81,7 @@ const QuestionPage = () => {
 
   return (
     <>
-     <div class='race-container' style={{height: '40%', background: '#ccc', padding: '15px', backgroundImage: `url(${background})`, backgroundRepeat:"no-repeat",backgroundSize:"cover", width:'100vw'}}>
+     <div class='race-container' style={{height: '40%', background: '#ccc', padding: '15px', backgroundImage: `url(${background})`, backgroundRepeat:"no-repeat",backgroundSize:"cover", width:'110%'}}>
        <UserAvatar/>
       </div>
        
