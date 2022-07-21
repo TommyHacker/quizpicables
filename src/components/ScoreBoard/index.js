@@ -6,8 +6,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
+
+
 
 function ScoreBoard() {
   const rows = [
@@ -18,9 +21,14 @@ function ScoreBoard() {
     { user: "QuizLoser", score: 0 },
   ];
 
-  return (
+  const navigate = useNavigate();
 
-  
+	const handleMove = (e) => {
+		e.preventDefault();
+		navigate("/");
+	  };
+
+  return (
     <div>
       <Typography style={{color:'white', margin: '25px auto', textAlign: 'center', fontSize: '2rem' }}>
         <h1>Final Results</h1>
@@ -56,8 +64,20 @@ function ScoreBoard() {
             </TableBody>
           </Table>
         </TableContainer>
+        
+        <div style={{display: 'flex', justifyContent: 'center', marginTop: '25px'}}>
+          <Button
+            onClick={handleMove}
+            variant="contained"
+            style={{ fontWeight: "bold", height: "50px", width: '200px' }}
+            sx={{ p: 4, m: 2.6 }}>
+            <h2>Play Again?</h2>
+          </Button>
+        </div>
       </div>
     </div>
+
+  
   );
 }
 
