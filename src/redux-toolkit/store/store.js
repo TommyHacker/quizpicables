@@ -11,6 +11,7 @@ import { messagesSlice } from "./messages";
 import connectedReducer from "./connected";
 import questionsSlice from "./questions-slice";
 import { playersSlice } from "./players";
+import { playerMovesCountSlice } from "./playerMovesCount";
 
 const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ const store = configureStore({
     isHost: isHostSlice.reducer,
     roomNumber: roomNumberSlice.reducer,
     score: scoreSlice.reducer,
+    playerMovesCount: playerMovesCountSlice.reducer,
     messages: messagesSlice.reducer,
     connected: connectedReducer,
     questions: questionsSlice.reducer,

@@ -39,7 +39,7 @@ const JoinModal = () => {
     socketController.updateUsername(username);
     socketController.updateRoomNumber(room);
     socketController.join();
-    navigate("/question");
+    navigate("/waiting");
   };
 
   return (

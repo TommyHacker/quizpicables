@@ -29,7 +29,7 @@ function ScoreBoard() {
 
             <TableHead>
               <TableRow
-                sx={{ "&:first-child td, &:first-child th": { border: 5 } }}
+                sx={{ "&:first-of-type td, &:first-of-type th": { border: 5 } }}
               >
                 <TableCell align="center">Users</TableCell>
                 <TableCell align="center">Scores</TableCell>

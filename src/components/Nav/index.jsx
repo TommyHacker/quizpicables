@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 const Nav = () => {
   const { players } = useSelector((state) => state.players);
+  const { playerMovesCount } = useSelector((state) => state.playerMovesCount);
   return (
     <nav>
       {players &&
@@ -12,6 +13,7 @@ const Nav = () => {
           return (
             <p key={index}>
               {player.username}:{player.score}
+              moves:{playerMovesCount}
             </p>
           );
         })}
