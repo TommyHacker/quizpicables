@@ -1,19 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { socketController } from "../../helpers/socketClass";
-import { messagesActions } from "../../redux-toolkit/store/messages";
+import { useNavigate } from "react-router-dom";
 
 const WaitingPage = () => {
+  const navigate = useNavigate();
   const { username } = useSelector((state) => state.username);
   const { roomNumber } = useSelector((state) => state.roomNumber);
   const { messages } = useSelector((state) => state.messages);
   const { players } = useSelector((state) => state.players);
+  const { isHost } = useSelector((state) => state.isHost);
 
   const dispatch = useDispatch();
 
-  const messageHandler = () => {
-    socketController.sendMessage("this is a test");
+  const navigateHandler = () => {
+    if (isHost) {
+      socket.emit("start_game");
+    }
   };
+
+  useEffect(() => {
+    socket.on("start_game", () => navigate("/question"));
+  });
+
 
   return (
     <>
@@ -24,12 +32,13 @@ const WaitingPage = () => {
       })}
 
       <h4>
-        lateset socket message:
+        latest socket message:
         <span style={{ marginLeft: "5px", fontWeight: "400" }}>
           {messages.length > 1 && messages[messages.length - 1]}
         </span>
       </h4>
       <h3>players</h3>
+      {isHost && <button onClick={() => navigateHandler()}>Start Game</button>}
     </>
   );
 };
