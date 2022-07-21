@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import UserAvatar from "../../components/UserAvatar";
-import background from "../../assets/images/space-background.png";
+import background from "../../assets/images/background8.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { changeScore } from "../../redux-toolkit/store/questions-slice";
 import { playerMovesCountActions } from "../../redux-toolkit/store/playerMovesCount";
@@ -182,7 +182,7 @@ const QuestionPage = () => {
       <div
         className="race-container"
         style={{
-          height: "40%",
+          height: "43%",
           background: "#ccc",
           padding: "15px",
           backgroundImage: `url(${background})`,
