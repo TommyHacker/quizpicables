@@ -8,12 +8,7 @@ const UserAvatar = () => {
 
     const { players } = useSelector((state) => state.players);
 
-    // FUNCTION TO DEFINE MOVEMENT
-    const movementScore = () => {
-
-    }
-
-    const userContainer1 = useRef(null);
+     const userContainer1 = useRef(null);
 
     useEffect(() => {
         lottie.loadAnimation({
@@ -25,14 +20,15 @@ const UserAvatar = () => {
         })
     }, [ players ])
 
+   
     return (
         <>
            {players &&
                players.map((player, index) => {
-                
-                return (
+                 
+                   return (
                         <div key={index} className='userRow' style={{height: '98px', display: 'flex', flexDirection: 'flex-start' }}>
-                            <div className='cart' style={{display: 'flex', marginLeft: '10%'}}>   
+                            <div className='cart' style={{display: 'flex', marginLeft: `${player.score * 10 }vw`}}>   
                                 <div className='userName' style={{ margin: 'auto 5px'}}>
                                     <Typography style={{ color: 'white', fontSize:'1.2em', fontWeight: 'bold', margin:'auto', textAlign: 'right' }}>
                                         {player.username} <br/>
@@ -40,7 +36,7 @@ const UserAvatar = () => {
                                         {/* Index: { index } */}
                                     </Typography>
                                 </div>
-                                <div ref={userContainer1} style={{ height: '115px'}}>
+                                <div ref={userContainer1} style={{ height: '98px', width: '165px'}}>
                                    {/* ------------- USER AVATAR GENERATES HERE ---------   */}
                                 </div>
                             </div>
