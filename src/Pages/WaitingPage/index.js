@@ -64,7 +64,7 @@ const WaitingPage = () => {
            </div>                   
     
  {/* ------------------------------ LOADING ANIMATIONn--------------------------------------------- */}               
-      <div style={{display: 'flex', justifyContent: 'center', height: '350px', width: '300px', margin: 'auto'}}>
+      <div className='loadinganimation' style={{display: 'flex', justifyContent: 'center', width: '30vw', margin: 'auto'}}>
         <div ref={container}> </div>
       </div>
 
@@ -78,7 +78,7 @@ const WaitingPage = () => {
       // Fuel Level Max: <br/><span className='complete'>COMPLETE</span>
       <br/>
       <br/>
-      // Importing useDispatch:<br/> <span className='complete'>COMPLETE</span>
+      // Importing Dependencies<br/> <span className='complete'>COMPLETE</span>
       <br/>
       <br/>
       // Tests Complete
