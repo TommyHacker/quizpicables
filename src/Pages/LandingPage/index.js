@@ -15,6 +15,7 @@ import './style.css';
 import logo from "../../assets/images/logo_large.png";
 import background from "../../assets/images/background8.jpg";
 
+
 const LandingPage = () => {
   const dispatch = useDispatch();
   const closeJoinModal = useSelector(
@@ -61,7 +62,7 @@ const LandingPage = () => {
             onClick={toggleSettingsModal}
             variant="contained"
             style={{ fontWeight: "bold" }}
-            sx={{ p: 3, m: 2.6 }}
+            sx={{ p: 3, m: 0 }}
           >
             Create Room
           </Button>

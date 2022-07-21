@@ -9,7 +9,7 @@ import { decode } from "html-entities";
 import axios from "axios";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-// import './style.css';
+import './style.css';
 
 //Generating a random number
 const getRandomInt = (max) => {
