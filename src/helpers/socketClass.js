@@ -15,19 +15,8 @@ class SocketControl {
     this.playersCount = 1;
     this.playersInfo = [""];
     global.socket = io.connect("http://localhost:4041");
-    // socket.on("message", ({ data }) => {
-    //   this.messages = [...this.messages, data ];
-    //   console.log(this.messages);
-    // });
-    // socket.on("players", ({ data }) => (this.playersInfo = data));
-    // socket.on("players_count", ({ data }) => {
-    //   this.playersCount = data;
-    //   console.log("set players count ", data);
-    // });
   }
-  connect() {
-    console.log("connecting to this.socket");
-  }
+  connect() {}
   updateRoomNumber(num) {
     this.roomNumber = num;
   }
@@ -42,13 +31,11 @@ class SocketControl {
       isHost: this.isHost,
       score: this.score,
     });
-    console.log("connecting to room number ", id);
   }
 
   sendMessage(messageText) {
     try {
       socket.emit("message", { messageText });
-      console.log("sending message");
     } catch (err) {
       console.log(err);
     }
@@ -57,17 +44,14 @@ class SocketControl {
   giveAnswer(choice, correctAnswer) {
     const data = { choice, correctAnswer, username: this.username };
     socket.emit("giveAnswer", { data });
-    console.log("giving answer");
   }
   createRoom() {
     const id = randomRoomId();
-    console.log("creating room with id", id);
     this.isHost = true;
     this.roomNumber = id;
     this.join(id);
   }
   disconnect() {
-    console.log("disconnecting!");
     socket.emit("message", { data: `${this.username} has disconnected.` });
     socket.disconnect();
   }

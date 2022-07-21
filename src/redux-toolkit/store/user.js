@@ -7,7 +7,6 @@ const usernameSlice = createSlice({
 
   reducers: {
     setUsername: (state, { payload }) => {
-      console.log("username, payload:", payload);
       state.username = payload;
     },
   },
@@ -18,7 +17,6 @@ const isHostSlice = createSlice({
   initialState: { isHost: false },
   reducers: {
     setIsHost: (state) => {
-      console.log("ishost, payload: ", state.isHost);
       switch (state.isHost) {
         case false:
           state.isHost = true;
@@ -39,7 +37,6 @@ const roomNumberSlice = createSlice({
 
   reducers: {
     setRoomNumber: (state, { payload }) => {
-      console.log("roomnumber payload: ", payload);
       state.roomNumber = payload;
     },
   },
@@ -50,7 +47,6 @@ const scoreSlice = createSlice({
   initialState: { score: 0 },
   reducers: {
     setScore: (state, { payload }) => {
-      console.log("playerScore payload:", payload);
       state.score = payload;
     },
   },
