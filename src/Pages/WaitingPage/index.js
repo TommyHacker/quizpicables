@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import background from '../../assets/images/background8.jpg';
 import lottie from 'lottie-web';
 import Button from '@mui/material/Button';
@@ -8,34 +8,33 @@ import Typography from '@mui/material/Typography';
 import './style.css';
 
 const WaitingPage = () => {
-  const navigate = useNavigate();
-  const { username } = useSelector((state) => state.username);
-  const { roomNumber } = useSelector((state) => state.roomNumber);
-  // const { messages } = useSelector((state) => state.messages);
-  const { players } = useSelector((state) => state.players);
-  const { isHost } = useSelector((state) => state.isHost);
+	const navigate = useNavigate();
+	const { username } = useSelector((state) => state.username);
+	const { roomNumber } = useSelector((state) => state.roomNumber);
+	// const { messages } = useSelector((state) => state.messages);
+	const { players } = useSelector((state) => state.players);
+	const { isHost } = useSelector((state) => state.isHost);
 
-  const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-  const navigateHandler = () => {
-    if (isHost) {
-      socket.emit("start_game");
-    }
-  };
+	const navigateHandler = () => {
+		if (isHost) {
+			socket.emit('start_game');
+		}
+	};
 
-  const container = useRef(null);
+	const container = useRef(null);
 
-  useEffect(() => {
-    socket.on("start_game", () => navigate("/question"));
-    lottie.loadAnimation({
-      container: container.current,
-      render: 'svg',
-      loop: true,
-      autoplay: true,
-      animationData: require('../../assets/animations/loading-icon.json')});
-  });
-
-  
+	useEffect(() => {
+		socket.on('start_game', () => navigate('/question'));
+		lottie.loadAnimation({
+			container: container.current,
+			render: 'svg',
+			loop: true,
+			autoplay: true,
+			animationData: require('../../assets/animations/loading-icon.json'),
+		});
+	});
 
 
   return (
