@@ -47,7 +47,7 @@ const JoinModal = () => {
       <div className="modal">
         <div className="modal-content">
           <div className="modal-header">
-            <h4 className="modal-title">Game Settings</h4>
+            <h4 className="modal-title">Enter Game Room</h4>
             <Button
               className="closeButton"
               onClick={toggleModal}

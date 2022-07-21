@@ -20,5 +20,3 @@ const App = () => {
 };
 
 export default App;
-
-// {/* // <Route path="/homepage" element={<Pages.LandingPage />} /> */}
