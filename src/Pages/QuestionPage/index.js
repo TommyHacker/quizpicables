@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback, useState } from "react";
 import UserAvatar from "../../components/UserAvatar";
-import background from "../../assets/images/space-background.png";
+import background from "../../assets/images/background8.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { changeScore } from "../../redux-toolkit/store/questions-slice";
 import { playerMovesCountActions } from "../../redux-toolkit/store/playerMovesCount";
@@ -186,7 +186,6 @@ const QuestionPage = () => {
         <UserAvatar />
       </div>
 
-      {/* QUESTION: DOES THIS HIDE THE QUESTION -AND- ANSWERS FROM THE GUEST USERS? */}
       <div
         style={{
           display: "flex",
@@ -194,7 +193,7 @@ const QuestionPage = () => {
           flexDirection: "column",
         }}
       >
-        <Typography style={{ textAlign: "center", fontSize: "1.3rem" }}>
+        <Typography style={{ textAlign: "center", fontSize: "1.3rem", textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F' }}>
           <h1>Question {questionIndex + 1}</h1>
           <h2>{decode(questions[questionIndex].question)}</h2>
         </Typography>

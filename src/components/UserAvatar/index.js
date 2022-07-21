@@ -9,9 +9,10 @@ const UserAvatar = () => {
     const { players } = useSelector((state) => state.players);
 
      const userContainer1 = useRef(null);
-     console.log(userContainer1)
-;
+     
     useEffect(() => {
+
+        console.log(userContainer1);
         lottie.loadAnimation({
             container: userContainer1.current,
             render: 'svg',
