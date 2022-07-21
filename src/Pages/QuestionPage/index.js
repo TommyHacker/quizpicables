@@ -233,7 +233,7 @@ const QuestionPage = () => {
                 variant="contained"
                 style={{
                   flex: "34%",
-                  width: "480px",
+                  minWidth: "320px",
                   fontSize: "1.4em",
                   fontWeight: "bold",
                 }}

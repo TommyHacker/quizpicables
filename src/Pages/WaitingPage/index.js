@@ -43,7 +43,7 @@ const WaitingPage = () => {
 {/* ------------------------------ LEFT SIDE: ROOM / PLAYER INFO --------------------------------------------- */}    
      <div className="background-container" style={{ backgroundImage: `url(${background})`, backgroundRepeat:"no-repeat",backgroundSize:"cover", height:'100vh',width:'100vw', color: 'white', padding: '25px'  }}>
           <Typography className='mobile-remove' style={{fontSize: '4.2rem', textAlign: 'center', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F'}}>
-            Room number: {roomNumber}
+            Room Number: {roomNumber}
             </Typography>
             <div className="info-container">
               <Typography  className='mobile-remove' style={{fontSize: '2.5rem', textDecoration: 'underline', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F'}}>
@@ -87,8 +87,8 @@ const WaitingPage = () => {
       </Typography>
          
  {/* ------------------------------ HOST SCREEN --------------------------------------------- */}
-          <Typography className='host-screen' style={{textAlign: 'center', fontSize: '4rem', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F, 20px 20px 200px #FFFFFF ' }}>
-                // Please Wait 
+          <Typography className='host-screen' style={{textAlign: 'center', fontSize: '4rem', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F, 20px 20px 200px #000000 ' }}>
+              Please Wait ...
         </Typography> 
       
       </div>
