@@ -9,7 +9,7 @@ import { decode } from "html-entities";
 import axios from "axios";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-// import './style.css';
+import './style.css';
 
 //Generating a random number
 const getRandomInt = (max) => {
@@ -182,13 +182,14 @@ const QuestionPage = () => {
       <div
         className="race-container"
         style={{
-          height: "43%",
+          height: "45%",
           background: "#ccc",
           padding: "15px",
           backgroundImage: `url(${background})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          width: "110%",
+          width: "100%",
+          padding: '4px'
         }}
       >
         {players &&
@@ -232,11 +233,11 @@ const QuestionPage = () => {
                 variant="contained"
                 style={{
                   flex: "34%",
-                  width: "480px",
+                  minWidth: "320px",
                   fontSize: "1.4em",
                   fontWeight: "bold",
                 }}
-                sx={{ p: 5, m: 2.6 }}
+                sx={{ p: 2, m: 2.6 }}
                 key={id}
               >
                 {data}
