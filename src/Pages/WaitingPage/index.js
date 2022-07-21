@@ -53,7 +53,8 @@ const WaitingPage = () => {
         </span>
       </Typography> */}
       {/* <Typography style={{fontSize: '2rem' }}>Players</Typography> */}
-      {isHost && <Button onClick={() => navigateHandler()}>Start Game</Button>}
+      {isHost && <Button variant="contained"
+                      style={{ fontWeight: "bold", height: "50px" }} onClick={() => navigateHandler()}>Start Game</Button>}
       
       <div style={{display: 'flex', justifyContent: 'center', height: '350px'}}>
         <div ref={container}> </div>
