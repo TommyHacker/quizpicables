@@ -22,9 +22,9 @@ const UserAvatar = () => {
             render: 'svg',
             loop: true,
             autoplay: true,
-            animationData: require('../../assets/animations/userAvatar0.json')
+            animationData: require(`../../assets/animations/userAvatar0.json`)
         })
-    }, [])
+    }, [ players ])
 
 
     return (
