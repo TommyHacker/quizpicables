@@ -227,6 +227,7 @@ const QuestionPage = () => {
           {decode(
             options.map((data, id) => (
               <Button
+                disabled={turnTaken}
                 onClick={handleClickAnswer}
                 variant="contained"
                 style={{

@@ -17,9 +17,8 @@ import { socketController } from "../../helpers/socketClass";
 //MATERIAL UI
 import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import {CircularProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import { Box } from "@mui/system";
-
 
 const SettingsModal = () => {
   const [number, setNumber] = useState(0);
@@ -62,7 +61,6 @@ const SettingsModal = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // joins user to private room with random room ID
-    socketController.host(true);
     dispatch(isHostActions.setIsHost());
     socketController.createRoom();
     dispatch(roomNumberActions.setRoomNumber(socketController.roomNumber));
@@ -107,68 +105,77 @@ const SettingsModal = () => {
             </Button>
           </div>
           <div className="modal-content">
-          { categories.length === 0 ? 
-            <Box style={{ display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            margin: "auto",height:"400px"}}>
-            <CircularProgress size="70px" />
-             </Box> : 
-            <form>
-              <div className="modal-item">
-                <label htmlFor="category">Choose a category</label>
-                <select onChange={handleCategory}>
-                  {categories.map((category) => {
-                    return <option key={category.id}> {category.name}</option>;
-                  })}
-                </select>
-              </div>
-              <div className="modal-item">
-                <label htmlFor="difficulty">Choose difficulty level</label>
-                <select
-                  name="difficulty"
-                  id="difficulty"
-                  onChange={handleDifficulty}
-                >
-                  {difficultyOptions.map(({ id, name }) => (
-                    <option key={id} value={id}>
-                      {name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="modal-item">
-                <label htmlFor="number">Number of questions</label>
-                <input placeholder="1"
-                  onChange={handleNumber}
-                  type="number"
-                  id="number"
-                  name="number"
-                ></input>
-              </div>
-              <div>
-                <Grid
-                  className="button-container"
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "auto",
-                    height: "100px",
-                  }}
-                >
-                  <Button
-                    onClick={handleSubmit}
-                    variant="contained"
-                    style={{ fontWeight: "bold", height: "50px" }}
-                    sx={{ p: 3, m: 2.6 }}
+            {categories.length === 0 ? (
+              <Box
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "auto",
+                  height: "400px",
+                }}
+              >
+                <CircularProgress size="70px" />
+              </Box>
+            ) : (
+              <form>
+                <div className="modal-item">
+                  <label htmlFor="category">Choose a category</label>
+                  <select onChange={handleCategory}>
+                    {categories.map((category) => {
+                      return (
+                        <option key={category.id}> {category.name}</option>
+                      );
+                    })}
+                  </select>
+                </div>
+                <div className="modal-item">
+                  <label htmlFor="difficulty">Choose difficulty level</label>
+                  <select
+                    name="difficulty"
+                    id="difficulty"
+                    onChange={handleDifficulty}
                   >
-                    Get Started!
-                  </Button>
-                </Grid>
-              </div>
-            </form>
-           }
+                    {difficultyOptions.map(({ id, name }) => (
+                      <option key={id} value={id}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="modal-item">
+                  <label htmlFor="number">Number of questions</label>
+                  <input
+                    placeholder="1"
+                    onChange={handleNumber}
+                    type="number"
+                    id="number"
+                    name="number"
+                  ></input>
+                </div>
+                <div>
+                  <Grid
+                    className="button-container"
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      margin: "auto",
+                      height: "100px",
+                    }}
+                  >
+                    <Button
+                      onClick={handleSubmit}
+                      variant="contained"
+                      style={{ fontWeight: "bold", height: "50px" }}
+                      sx={{ p: 3, m: 2.6 }}
+                    >
+                      Get Started!
+                    </Button>
+                  </Grid>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </div>

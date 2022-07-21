@@ -15,7 +15,11 @@ const UserAvatar = ({ player, index, avatarSrc }) => {
       render: "svg",
       loop: true,
       autoplay: true,
-      animationData: require(`../../assets/animations/${avatarSrc}`),
+      animationData: require(`../../assets/animations/${avatarSrc}` ||
+        "../../assets/animations/userAvatar0.json"),
+      // avatarSrc= userAvatar0 1 2 3 ...,
+      // so a fifth player would be userAvatar4.json which doesnt exist
+      // so || default to the first avatar
     });
   }, [players]);
 
