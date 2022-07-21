@@ -12,10 +12,9 @@ const UserAvatar = () => {
     const movementScore = () => {
 
     }
+
     const userContainer1 = useRef(null);
 
-    // PASS IN { userID } to animationData: require('../../assets/userAvatar{ userID }.json')
-    // USESTATE ??? <----------------------------------------------------------------------------------
     useEffect(() => {
         lottie.loadAnimation({
             container: userContainer1.current,
@@ -26,15 +25,14 @@ const UserAvatar = () => {
         })
     }, [ players ])
 
-
     return (
         <>
            {players &&
                players.map((player, index) => {
                 
                 return (
-                        <div key={index} className='userRow' style={{height: '100px', display: 'flex', flexDirection: 'flex-start', }}>
-                            <div className='cart' style={{display: 'flex', marginLeft: '30%'}}>   
+                        <div key={index} className='userRow' style={{height: '98px', display: 'flex', flexDirection: 'flex-start' }}>
+                            <div className='cart' style={{display: 'flex', marginLeft: '10%'}}>   
                                 <div className='userName' style={{ margin: 'auto 5px'}}>
                                     <Typography style={{ color: 'white', fontSize:'1.2em', fontWeight: 'bold', margin:'auto', textAlign: 'right' }}>
                                         {player.username} <br/>
@@ -43,7 +41,7 @@ const UserAvatar = () => {
                                     </Typography>
                                 </div>
                                 <div ref={userContainer1} style={{ height: '115px'}}>
-                                          {/* ------------- USER AVATAR GENERATES HERE ---------   */}
+                                   {/* ------------- USER AVATAR GENERATES HERE ---------   */}
                                 </div>
                             </div>
                       </div>
