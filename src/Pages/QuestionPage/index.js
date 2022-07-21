@@ -201,7 +201,7 @@ const QuestionPage = () => {
           flexDirection: "column",
         }}
       >
-        <Typography style={{ textAlign: "center", fontSize: "1.3rem", textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F' }}>
+        <Typography style={{ textAlign: "center", fontSize: "1.3rem" }}>
           <h1>Question {questionIndex + 1}</h1>
           <h2>{decode(questions[questionIndex].question)}</h2>
         </Typography>
