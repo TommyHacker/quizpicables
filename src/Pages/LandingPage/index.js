@@ -15,6 +15,7 @@ import './style.css';
 import logo from "../../assets/images/logo_large.png";
 import background from "../../assets/images/background8.jpg";
 
+
 const LandingPage = () => {
   const dispatch = useDispatch();
   const closeJoinModal = useSelector(
