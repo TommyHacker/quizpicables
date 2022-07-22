@@ -41,6 +41,10 @@ const WaitingPage = () => {
     <>
 {/* ------------------------------ LEFT SIDE: ROOM / PLAYER INFO --------------------------------------------- */}    
      <div className="background-container" style={{ backgroundImage: `url(${background})`, backgroundRepeat:"no-repeat",backgroundSize:"cover", height:'100vh',width:'100vw', color: 'white', padding: '25px'  }}>
+         {/* ------------------------------ LOADING ANIMATIONn--------------------------------------------- */}               
+          {/* <div className='loadinganimation' style={{display: 'flex', justifyContent: 'center', width: '700px', margin: '50px auto'}}> */}
+              <div style={{ position: 'absolute', width: '700px', margin: '150px auto 0', left: '0', right: '0', textAlign: 'center'}} ref={container}> </div>
+
           <Typography className='mobile-remove' style={{fontSize: '4.2rem', textAlign: 'center', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F'}}>
             Room Number: {roomNumber}
             </Typography>
@@ -48,7 +52,7 @@ const WaitingPage = () => {
           <Typography className='host-screen' style={{textAlign: 'center', fontSize: '4rem', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F, 20px 20px 200px #000000 ' }}>
               Please Wait ...
         </Typography> 
-            <div className="info-container">
+            <div className="info-container" style={{margin: '0 0', width: '100%'}}>
               <Typography  className='mobile-remove' style={{fontSize: '2.5rem', textDecoration: 'underline', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F'}}>
                 Player Amount: {players.length} <br/>
               </Typography>
@@ -67,10 +71,7 @@ const WaitingPage = () => {
                               style={{ fontWeight: "bold", height: "120px", width: '290px', fontSize: '2rem', marginTop: '25px' }} onClick={() => navigateHandler()}>LAUNCH GAME</Button>}
            </div>                   
     
- {/* ------------------------------ LOADING ANIMATIONn--------------------------------------------- */}               
-      <div className='loadinganimation' style={{display: 'flex', justifyContent: 'center', width: '700px', margin: '50px auto'}}>
-          <div ref={container}> </div>
-      </div>
+
 
  {/* ------------------------------ MOBILE SCREEN --------------------------------------------- */}      
       <Typography  className='mobile-shrink' style={{textAlign: 'center', textWeight:'bold', letterSpacing: '3px', color: 'white', textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F,0px 0px 3px #665A9F ' }}>// Spooling Warp Drive:<br/> <span className='complete'>COMPLETE</span>
@@ -89,8 +90,9 @@ const WaitingPage = () => {
       </Typography>
          
 
-      
       </div>
+   
+   
      
     </>
   );
