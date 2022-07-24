@@ -38,7 +38,7 @@ const UserAvatar = ({ player, index, avatarSrc, questions }) => {
 					className='cart'
 					style={{
 						display: 'flex',
-						transition: '2s',
+						transition: '0.6s',
 						marginLeft: `${(player.score / questions) * 100}vw`,
 					}}
 				>

@@ -154,11 +154,8 @@ const QuestionPage = () => {
 		// dispatch(playerMovesCountActions.increment());
 		setTurnTaken(true);
 		const question = questions[questionIndex];
-		console.log('e.target.textContent', e.target.textContent);
-		console.log('question.correct_answer', question.correct_answer);
 		if (e.target.textContent == question.correct_answer) {
 			dispatch(scoreActions.setScore(score + 1));
-			console.log('That was a correct answer!');
 			let tempArr = [];
 			const result = players.map((player) => {
 				if (player.username === username) {
@@ -222,11 +219,11 @@ const QuestionPage = () => {
 					flexDirection: 'column',
 				}}
 			>
-				<Typography variant='h3' component='h3' sx={{ textAlign: 'center' }}>
+				<Typography variant='h4' component='h4' sx={{ textAlign: 'center' }}>
 					Question {questionIndex + 1}
 				</Typography>
 
-				<Typography component='h2' variant='h2' sx={{ textAlign: 'center' }}>
+				<Typography component='h4' variant='h4' sx={{ textAlign: 'center' }}>
 					{decode(questions[questionIndex].question)}
 				</Typography>
 
