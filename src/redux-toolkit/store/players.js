@@ -6,7 +6,6 @@ export const playersSlice = createSlice({
 
 	reducers: {
 		setPlayers: (state, { payload }) => {
-			console.log(payload);
 			state.players = payload;
 		},
 	},

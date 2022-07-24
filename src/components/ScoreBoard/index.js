@@ -11,43 +11,36 @@ import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { playersActions } from '../../redux-toolkit/store/players';
-import { isHostActions } from '../../redux-toolkit/store/user';
+import { changeScore } from '../../redux-toolkit/store/questions-slice';
+import { isHostActions, scoreActions } from '../../redux-toolkit/store/user';
+import { connectedActions } from '../../redux-toolkit/store/connected';
+import { socketController } from '../../helpers/socketClass';
 
 function ScoreBoard({}) {
 	const { players } = useSelector((state) => state.players);
 	const { username } = useSelector((state) => state.username);
 	const { isHost } = useSelector((state) => state.isHost);
 	const navigate = useNavigate();
+	const { connected } = useSelector((state) => state.connected);
 	const dispatch = useDispatch();
-
-	useEffect(() => {
-		let tempArr = [];
-		if (players) {
-			for (let i = 0; i < players.length; i++) {
-				tempArr.push({
-					username: players[i].username,
-					score: players[i].score,
-				});
-			}
-			window.localStorage.setItem('oldscores', JSON.stringify(tempArr));
-		}
-		socket.emit('leave_room', { data: username });
-	}, []);
 
 	const handleMove = (e) => {
 		e.preventDefault();
+		socket.emit('leave_room', { data: username });
 		socket.emit('message', { data: `${username} has disconnected.` });
-		dispatch(
-			playersActions.setPlayers([{ name: 'founder', roomNumber: 'guess' }])
-		);
+
+		// dispatch()
 		if (isHost) {
 			dispatch(isHostActions.setIsHost());
 		}
+		dispatch(scoreActions.setScore(0));
+		dispatch(changeScore(0));
 		navigate('/');
 	};
 	return (
 		<div>
 			<Typography
+				component='h1'
 				style={{
 					color: 'white',
 					margin: '25px auto',
@@ -57,7 +50,7 @@ function ScoreBoard({}) {
 					textShadow: '0px 0px 7px #665A9F,0px 0px 3px #665A9F',
 				}}
 			>
-				<h1>Final Results</h1>
+				Final Results
 			</Typography>
 			<div>
 				<TableContainer style={{ marginLeft: '12.5%' }}>
@@ -71,7 +64,7 @@ function ScoreBoard({}) {
 						<TableHead>
 							<TableRow
 								sx={{
-									'&:first-child td, &:first-child th': { borderBottom: 2 },
+									'&:first-of-type td, &:first-of-type th': { borderBottom: 2 },
 								}}
 							>
 								<TableCell style={{ fontSize: '2rem' }} align='center'>

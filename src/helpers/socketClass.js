@@ -5,8 +5,8 @@ const randomRoomId = () => {
 
 class SocketControl {
 	constructor(username = 'Host', isHost = false) {
-		this.url = 'https://quizpicable-server.herokuapp.com/';
-		// this.url = 'http://localhost:4040';
+		// this.url = 'https://quizpicable-server.herokuapp.com/';
+		this.url = 'http://localhost:4040';
 		this.username = username;
 		this.roomNumber = 0;
 		this.isHost = isHost;
@@ -15,8 +15,8 @@ class SocketControl {
 		this.gameData = {};
 		this.playersCount = 1;
 		this.playersInfo = [''];
-		global.socket = io.connect('https://quizpicable-server.herokuapp.com/');
-		// global.socket = io.connect('http://localhost:4040');
+		// global.socket = io.connect('https://quizpicable-server.herokuapp.com/');
+		global.socket = io.connect('http://localhost:4040');
 	}
 	connect() {}
 	updateRoomNumber(num) {
@@ -49,11 +49,8 @@ class SocketControl {
 	}
 	async createRoom() {
 		const id = randomRoomId();
-		console.log('made new room id ', id);
 		this.isHost = true;
-		console.log('setting to host true on class object');
 		this.roomNumber = id;
-		console.log('joining room', id);
 		this.join(id);
 	}
 	disconnect() {

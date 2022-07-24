@@ -29,7 +29,6 @@ const questionsSlice = createSlice ({
             state.score = action.payload;   
         },
     }
-
 })
 
 export const {changeCategory, changeDifficulty, changeAmount, changeScore } = questionsSlice.actions;

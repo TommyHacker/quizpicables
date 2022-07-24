@@ -14,9 +14,9 @@ const SocketComponent = () => {
 	const { isHost } = useSelector((state) => state.isHost);
 
 	useEffect(() => {
-		socket.on('players', ({ data }) =>
-			dispatch(playersActions.setPlayers(data))
-		);
+		socket.on('players', ({ data }) => {
+			dispatch(playersActions.setPlayers(data));
+		});
 		socket.on('message', ({ data }) => dispatch(messagesActions.update(data)));
 	}, []);
 
@@ -30,7 +30,10 @@ const SocketComponent = () => {
 			socket.emit('message', { data: `${username} has disconnected.` });
 			socket.disconnect();
 			// reset joinedRoom state so the user can once again input the private room number and their chosen username.
-			dispatch(connectedActions.setConnected());
+			// dispatch(connectedActions.setConnected());
+			// console.log('disconnecting');
+			// dispatch(connectedActions.setConnected());
+			// console.log('connecting again...');
 		}
 	}, [connected]);
 };

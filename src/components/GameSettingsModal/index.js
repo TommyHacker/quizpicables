@@ -29,6 +29,7 @@ const SettingsModal = () => {
 
 	const [categories, setCategories] = useState([]);
 
+	const { isHost } = useSelector((state) => state.isHost);
 	useEffect(() => {
 		getCategories().then((categoriesFromApi) => {
 			setCategories(categoriesFromApi.trivia_categories);
@@ -61,7 +62,9 @@ const SettingsModal = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		// joins user to private room with random room ID
-		dispatch(isHostActions.setIsHost(true));
+		if (!isHost) {
+			dispatch(isHostActions.setIsHost(true));
+		}
 		socketController.createRoom();
 		dispatch(roomNumberActions.setRoomNumber(socketController.roomNumber));
 		navigate('/waiting');
